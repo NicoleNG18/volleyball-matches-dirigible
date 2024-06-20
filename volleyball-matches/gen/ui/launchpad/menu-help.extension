@@ -1,0 +1,5 @@
+{
+    "module": "volleyball-matches/gen/ui/launchpad/menu-help.js",
+    "extensionPoint": "volleyball-matches-menu",
+    "description": "volleyball-matches - Application Menu"
+}

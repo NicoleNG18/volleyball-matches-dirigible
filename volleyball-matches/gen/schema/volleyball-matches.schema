@@ -1,0 +1,215 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "VOLEYBALL_MATCHES_LEAGUE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEAGUE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEAGUE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "VOLEYBALL_MATCHES_TEAM",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "TEAM_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "TEAM_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAM_LEAGUE"
+                    }
+                ]
+            },
+            {
+                "name": "VOLEYBALL_MATCHES_MATCH",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "MATCH_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MATCH_SET_1"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MATCH_SET2"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MATCH_SET_3"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MATCH_SET_4"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MATCH_SET_5"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_LEAGUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_WINNER_TEAM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_LOST_TEAM"
+                    }
+                ]
+            },
+            {
+                "name": "VOLEYBALL_MATCHES_PLAYER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PLAYER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PLAYER_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PLAYER_AGE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PLAYER_TEAM"
+                    }
+                ]
+            },
+            {
+                "name": "VOLEYBALL_MATCHES_COACH",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COACH_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COACH_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "COACH_TEAM"
+                    }
+                ]
+            },
+            {
+                "name": "Team_League",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_TEAM",
+                "constraintName": "Team_League",
+                "columns": "TEAM_LEAGUE",
+                "referencedTable": "VOLEYBALL_MATCHES_LEAGUE",
+                "referencedColumns": "LEAGUE_ID"
+            },
+            {
+                "name": "Match_League",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_MATCH",
+                "constraintName": "Match_League",
+                "columns": "MATCH_LEAGUE",
+                "referencedTable": "VOLEYBALL_MATCHES_LEAGUE",
+                "referencedColumns": "LEAGUE_ID"
+            },
+            {
+                "name": "Match_Team",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_MATCH",
+                "constraintName": "Match_Team",
+                "columns": "MATCH_WINNER_TEAM",
+                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedColumns": "TEAM_ID"
+            },
+            {
+                "name": "Match_Team",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_MATCH",
+                "constraintName": "Match_Team",
+                "columns": "MATCH_LOST_TEAM",
+                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedColumns": "TEAM_ID"
+            },
+            {
+                "name": "Player_Team",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_PLAYER",
+                "constraintName": "Player_Team",
+                "columns": "PLAYER_TEAM",
+                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedColumns": "TEAM_ID"
+            },
+            {
+                "name": "Coach_Team",
+                "type": "foreignKey",
+                "table": "VOLEYBALL_MATCHES_COACH",
+                "constraintName": "Coach_Team",
+                "columns": "COACH_TEAM",
+                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedColumns": "TEAM_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
