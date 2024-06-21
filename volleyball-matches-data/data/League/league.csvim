@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "table": "VOLLEYBALL_MATCHES_LEAGUE",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/League/league.csv",
+      "header": false,
+      "useHeaderNames": false,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    }
+  ]
+}
