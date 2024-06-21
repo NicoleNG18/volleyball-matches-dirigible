@@ -3,61 +3,70 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface LeagueEntity {
+export interface CoachEntity {
     readonly Id: number;
-    Name: string;
+    Name?: string;
+    Team?: number;
 }
 
-export interface LeagueCreateEntity {
-    readonly Name: string;
+export interface CoachCreateEntity {
+    readonly Name?: string;
+    readonly Team?: number;
 }
 
-export interface LeagueUpdateEntity extends LeagueCreateEntity {
+export interface CoachUpdateEntity extends CoachCreateEntity {
     readonly Id: number;
 }
 
-export interface LeagueEntityOptions {
+export interface CoachEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Team?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Team?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Team?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Team?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Team?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Team?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Team?: number;
         };
     },
-    $select?: (keyof LeagueEntity)[],
-    $sort?: string | (keyof LeagueEntity)[],
+    $select?: (keyof CoachEntity)[],
+    $sort?: string | (keyof CoachEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface LeagueEntityEvent {
+interface CoachEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<LeagueEntity>;
+    readonly entity: Partial<CoachEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -65,27 +74,31 @@ interface LeagueEntityEvent {
     }
 }
 
-interface LeagueUpdateEntityEvent extends LeagueEntityEvent {
-    readonly previousEntity: LeagueEntity;
+interface CoachUpdateEntityEvent extends CoachEntityEvent {
+    readonly previousEntity: CoachEntity;
 }
 
-export class LeagueRepository {
+export class CoachRepository {
 
     private static readonly DEFINITION = {
-        table: "VOLLEYBALL_MATCHES_LEAGUE",
+        table: "VOLLEYBALL_MATCHES_COACH",
         properties: [
             {
                 name: "Id",
-                column: "LEAGUE_ID",
+                column: "COACH_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "LEAGUE_NAME",
+                column: "COACH_NAME",
                 type: "VARCHAR",
-                required: true
+            },
+            {
+                name: "Team",
+                column: "COACH_TEAM",
+                type: "INTEGER",
             }
         ]
     };
@@ -93,58 +106,58 @@ export class LeagueRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(LeagueRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CoachRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: LeagueEntityOptions): LeagueEntity[] {
+    public findAll(options?: CoachEntityOptions): CoachEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): LeagueEntity | undefined {
+    public findById(id: number): CoachEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: LeagueCreateEntity): number {
+    public create(entity: CoachCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "VOLLEYBALL_MATCHES_LEAGUE",
+            table: "VOLLEYBALL_MATCHES_COACH",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEAGUE_ID",
+                column: "COACH_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: LeagueUpdateEntity): void {
+    public update(entity: CoachUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "VOLLEYBALL_MATCHES_LEAGUE",
+            table: "VOLLEYBALL_MATCHES_COACH",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEAGUE_ID",
+                column: "COACH_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: LeagueCreateEntity | LeagueUpdateEntity): number {
-        const id = (entity as LeagueUpdateEntity).Id;
+    public upsert(entity: CoachCreateEntity | CoachUpdateEntity): number {
+        const id = (entity as CoachUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as LeagueUpdateEntity);
+            this.update(entity as CoachUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -156,22 +169,22 @@ export class LeagueRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "VOLLEYBALL_MATCHES_LEAGUE",
+            table: "VOLLEYBALL_MATCHES_COACH",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEAGUE_ID",
+                column: "COACH_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: LeagueEntityOptions): number {
+    public count(options?: CoachEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLLEYBALL_MATCHES_LEAGUE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLLEYBALL_MATCHES_COACH"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -182,8 +195,8 @@ export class LeagueRepository {
         return 0;
     }
 
-    private async triggerEvent(data: LeagueEntityEvent | LeagueUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("volleyball-matches-League-League", ["trigger"]);
+    private async triggerEvent(data: CoachEntityEvent | CoachUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("volleyball-matches-Coaches-Coach", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -191,6 +204,6 @@ export class LeagueRepository {
                 console.error(error);
             }            
         });
-        producer.topic("volleyball-matches-League-League").send(JSON.stringify(data));
+        producer.topic("volleyball-matches-Coaches-Coach").send(JSON.stringify(data));
     }
 }

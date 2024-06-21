@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
         <title dg-brand-title></title>
-        <script type="text/javascript" src="ui/launchpad/perspective.js"></script>
+        <script type="text/javascript" src="perspective.js"></script>
         <theme></theme>
         <script type="text/javascript"
             src="/services/js/resources-core/services/loader.js?id=application-perspective-js">
@@ -23,18 +23,21 @@
             href="/services/js/resources-core/services/loader.js?id=application-perspective-css" />
     </head>
 
-    <body>
+    <body dg-embeddable-perspective>
         <ide-header menu-ext-id="volleyball-matches-menu"></ide-header>
-
-        <ide-container>
-            <view id="volleyball-matches-home-launchpad"></view>
+        <ide-container ng-if="!state.error && !state.isBusy">
+            <ide-layout views-layout-model="layoutModel"></ide-layout>
         </ide-container>
-
+        <fd-busy-indicator-extended ng-if="!state.error && state.isBusy" class="dg-fill-parent" dg-size="l">
+            {{state.busyText}}
+        </fd-busy-indicator-extended>
+        <fd-message-page glyph="sap-icon--error" ng-if="state.error">
+            <fd-message-page-title>Encounterd an error while loading</fd-message-page-title>
+        </fd-message-page>
         <ide-dialogs></ide-dialogs>
         <ide-status-bar></ide-status-bar>
-
         <script type="text/javascript">
-            angular.module('app', ['ngResource', 'ideLayout', 'ideUI'])
+            angular.module('app', ['ngResource', 'ideLayout', 'ideUI', 'ideExtensions'])
                 .constant('branding', {
                     name: 'Matches score',
                     brand: 'Volleyball matches',
@@ -47,19 +50,28 @@
                     logo: '/services/web/ide-branding/images/logo.svg',
                 })
                 .constant('extensionPoint', {
-                    perspectives: "volleyball-matches",
-                    views: "volleyball-matches-view",
-                    dialogWindows: "volleyball-matches-dialog-window"
+                    perspectives: 'volleyball-matches',
+                    views: 'volleyball-matches-view',
+                    dialogWindows: 'volleyball-matches-dialog-window'
                 })
-                .config(["messageHubProvider", function (messageHubProvider) {
-                    messageHubProvider.eventIdPrefix = 'volleyball-matches.launchpad.Home';
-                }])
-                .controller('ApplicationController', ["$scope", "messageHub", function ($scope, messageHub) {
-
-                    messageHub.onDidReceiveMessage("openView", function (msg) {
-                        window.location = msg.data.location;
+                .controller('ApplicationController', ['$scope', 'messageHub', 'Extensions', function ($scope, messageHub, Extensions) {
+                    $scope.state = {
+                        isBusy: true,
+                        error: false,
+                        busyText: 'Loading...',
+                    };
+                    $scope.layoutModel = {
+                        views: []
+                    };
+                    Extensions.get('view', 'volleyball-matches-view').then(function (response) {
+                        $scope.layoutModel = {
+                            views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'Coaches').map(e => e.id)
+                        };
+                        $scope.state.isBusy = false;
+                    }, function (error) {
+                        console.error(error);
+                        $scope.state.error = true;
                     });
-
                 }]);
         </script>
     </body>

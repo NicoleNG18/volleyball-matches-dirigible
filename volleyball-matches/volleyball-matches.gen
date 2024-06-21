@@ -1,21 +1,20 @@
 {
-  "tablePrefix": "VOLEYBALL_MATCHES_",
-  "brand": "volleyball matches",
+  "tablePrefix": "VOLLEYBALL_MATCHES_",
+  "brand": "Volleyball matches",
   "brandUrl": "some url",
-  "title": "Volleyball matches ",
-  "description": "Matches results",
-  "fileName": "volleyball-matches",
-  "dataSource": "DefaultDB",
-  "genFolderName": "volleyball-matches",
+  "title": "Matches score",
+  "description": "Volleyball matches score",
   "projectName": "volleyball-matches",
   "workspaceName": "workspace",
   "filePath": "volleyball-matches.model",
   "templateId": "template-application-angular/template/template.js",
+  "fileName": "volleyball-matches",
+  "genFolderName": "volleyball-matches",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "League": {
       "views": [
-        "League",
-        "Match"
+        "League"
       ],
       "name": "League",
       "label": "League",
@@ -25,14 +24,42 @@
     },
     "Teams": {
       "views": [
-        "Team",
-        "Player",
-        "Coach"
+        "Team"
       ],
       "name": "Teams",
       "label": "Teams",
       "order": "301",
       "icon": "/services/web/resources/unicons/play.svg",
+      "role": ""
+    },
+    "Players": {
+      "views": [
+        "Player"
+      ],
+      "name": "Players",
+      "label": "Players",
+      "order": "303",
+      "icon": "/services/web/resources/unicons/amazon.svg",
+      "role": ""
+    },
+    "Matches": {
+      "views": [
+        "Match"
+      ],
+      "name": "Matches",
+      "label": "Matches",
+      "order": "302",
+      "icon": "/services/web/resources/unicons/apps.svg",
+      "role": ""
+    },
+    "Coaches": {
+      "views": [
+        "Coach"
+      ],
+      "name": "Coaches",
+      "label": "Coaches",
+      "order": "304",
+      "icon": "/services/web/resources/unicons/ambulance.svg",
       "role": ""
     }
   },
@@ -86,7 +113,7 @@
         }
       ],
       "caption": "Manage entity League",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLEYBALL_MATCHES_LEAGUE\"",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLLEYBALL_MATCHES_LEAGUE\"",
       "dataName": "LEAGUE",
       "dataQuery": "",
       "generateReport": "false",
@@ -188,7 +215,7 @@
         }
       ],
       "caption": "Manage entity Team",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLEYBALL_MATCHES_TEAM\"",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLLEYBALL_MATCHES_TEAM\"",
       "dataName": "TEAM",
       "dataQuery": "",
       "generateReport": "false",
@@ -312,7 +339,7 @@
         }
       ],
       "caption": "Manage entity Player",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLEYBALL_MATCHES_PLAYER\"",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLLEYBALL_MATCHES_PLAYER\"",
       "dataName": "PLAYER",
       "dataQuery": "",
       "generateReport": "false",
@@ -323,10 +350,10 @@
       "menuLabel": "Player",
       "name": "Player",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/play.svg",
-      "perspectiveLabel": "Teams",
-      "perspectiveName": "Teams",
-      "perspectiveOrder": "301",
+      "perspectiveIcon": "/services/web/resources/unicons/amazon.svg",
+      "perspectiveLabel": "Players",
+      "perspectiveName": "Players",
+      "perspectiveOrder": "303",
       "perspectiveRole": "",
       "title": "Player",
       "tooltip": "Player",
@@ -566,7 +593,7 @@
         }
       ],
       "caption": "Manage entity Match",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLEYBALL_MATCHES_MATCH\"",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLLEYBALL_MATCHES_MATCH\"",
       "dataName": "MATCH",
       "dataQuery": "",
       "generateReport": "false",
@@ -577,10 +604,10 @@
       "menuLabel": "Match",
       "name": "Match",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/document-info.svg",
-      "perspectiveLabel": "Leagues",
-      "perspectiveName": "League",
-      "perspectiveOrder": "300",
+      "perspectiveIcon": "/services/web/resources/unicons/apps.svg",
+      "perspectiveLabel": "Matches",
+      "perspectiveName": "Matches",
+      "perspectiveOrder": "302",
       "perspectiveRole": "",
       "title": "Match",
       "tooltip": "Match",
@@ -669,7 +696,7 @@
         }
       ],
       "caption": "Manage entity Coach",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLEYBALL_MATCHES_COACH\"",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"VOLLEYBALL_MATCHES_COACH\"",
       "dataName": "COACH",
       "dataQuery": "",
       "generateReport": "false",
@@ -680,10 +707,10 @@
       "menuLabel": "Coach",
       "name": "Coach",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/play.svg",
-      "perspectiveLabel": "Teams",
-      "perspectiveName": "Teams",
-      "perspectiveOrder": "301",
+      "perspectiveIcon": "/services/web/resources/unicons/ambulance.svg",
+      "perspectiveLabel": "Coaches",
+      "perspectiveName": "Coaches",
+      "perspectiveOrder": "304",
       "perspectiveRole": "",
       "title": "Coach",
       "tooltip": "Coach",

@@ -2,7 +2,7 @@
     "schema": {
         "structures": [
             {
-                "name": "VOLEYBALL_MATCHES_LEAGUE",
+                "name": "VOLLEYBALL_MATCHES_LEAGUE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -20,7 +20,7 @@
                 ]
             },
             {
-                "name": "VOLEYBALL_MATCHES_TEAM",
+                "name": "VOLLEYBALL_MATCHES_TEAM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -44,7 +44,7 @@
                 ]
             },
             {
-                "name": "VOLEYBALL_MATCHES_PLAYER",
+                "name": "VOLLEYBALL_MATCHES_PLAYER",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -73,7 +73,7 @@
                 ]
             },
             {
-                "name": "VOLEYBALL_MATCHES_MATCH",
+                "name": "VOLLEYBALL_MATCHES_MATCH",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -131,7 +131,7 @@
                 ]
             },
             {
-                "name": "VOLEYBALL_MATCHES_COACH",
+                "name": "VOLLEYBALL_MATCHES_COACH",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -157,55 +157,55 @@
             {
                 "name": "Team_League",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_TEAM",
+                "table": "VOLLEYBALL_MATCHES_TEAM",
                 "constraintName": "Team_League",
                 "columns": "TEAM_LEAGUE",
-                "referencedTable": "VOLEYBALL_MATCHES_LEAGUE",
+                "referencedTable": "VOLLEYBALL_MATCHES_LEAGUE",
                 "referencedColumns": "LEAGUE_ID"
             },
             {
                 "name": "Player_Team",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_PLAYER",
+                "table": "VOLLEYBALL_MATCHES_PLAYER",
                 "constraintName": "Player_Team",
                 "columns": "PLAYER_TEAM",
-                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             },
             {
                 "name": "Match_League",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_MATCH",
+                "table": "VOLLEYBALL_MATCHES_MATCH",
                 "constraintName": "Match_League",
                 "columns": "MATCH_LEAGUE",
-                "referencedTable": "VOLEYBALL_MATCHES_LEAGUE",
+                "referencedTable": "VOLLEYBALL_MATCHES_LEAGUE",
                 "referencedColumns": "LEAGUE_ID"
             },
             {
                 "name": "Match_Team",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_MATCH",
+                "table": "VOLLEYBALL_MATCHES_MATCH",
                 "constraintName": "Match_Team",
                 "columns": "MATCH_WINNER_TEAM",
-                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             },
             {
                 "name": "Match_Team",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_MATCH",
+                "table": "VOLLEYBALL_MATCHES_MATCH",
                 "constraintName": "Match_Team",
                 "columns": "MATCH_LOST_TEAM",
-                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             },
             {
                 "name": "Coach_Team",
                 "type": "foreignKey",
-                "table": "VOLEYBALL_MATCHES_COACH",
+                "table": "VOLLEYBALL_MATCHES_COACH",
                 "constraintName": "Coach_Team",
                 "columns": "COACH_TEAM",
-                "referencedTable": "VOLEYBALL_MATCHES_TEAM",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             }
         ]

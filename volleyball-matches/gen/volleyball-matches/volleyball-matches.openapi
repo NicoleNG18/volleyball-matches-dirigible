@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Volleyball matches  - OpenAPI 3.0
+  title: Matches score - OpenAPI 3.0
   version: 1.0.0
-  description: Matches results
+  description: Volleyball matches score
 externalDocs:
   description: Find out more about Eclipse Dirigible
   url: https://dirigible.io
@@ -11,9 +11,9 @@ servers:
 tags:
   - name: League
   - name: Teams
-  - name: Teams
-  - name: League
-  - name: Teams
+  - name: Players
+  - name: Matches
+  - name: Coaches
 paths:
   /volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts:
     get:
@@ -815,7 +815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/PlayerService.ts:
+  /volleyball-matches/gen/volleyball-matches/api/Players/PlayerService.ts:
     get:
       summary: List Player
       parameters:
@@ -836,7 +836,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Teams
+        - Players
       responses:
         200:
           description: Successful Request
@@ -867,7 +867,7 @@ paths:
     post:
       summary: Create Player
       tags:
-        - Teams
+        - Players
       requestBody:
         content:
           application/json:
@@ -899,7 +899,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/PlayerService.ts/{id}:
+  /volleyball-matches/gen/volleyball-matches/api/Players/PlayerService.ts/{id}:
     get:
       summary: Get Player by Id
       parameters:
@@ -910,7 +910,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Players
       responses:
         200:
           description: Successful Request
@@ -948,7 +948,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Players
       requestBody:
         content:
           application/json:
@@ -996,7 +996,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Players
       responses:
         204:
           description: Successful Request
@@ -1018,11 +1018,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/PlayerService.ts/count:
+  /volleyball-matches/gen/volleyball-matches/api/Players/PlayerService.ts/count:
     get:
       summary: Count the number of Player
       tags:
-        - Teams
+        - Players
       responses:
         200:
           description: Successful Request
@@ -1046,7 +1046,7 @@ paths:
     post:
       summary: Count the number of Player by PlayerFilterOptions
       tags:
-        - Teams
+        - Players
       requestBody:
         content:
           application/json:
@@ -1128,11 +1128,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/PlayerService.ts/search:
+  /volleyball-matches/gen/volleyball-matches/api/Players/PlayerService.ts/search:
     post:
       summary: Search Player by PlayerFilterOptions
       tags:
-        - Teams
+        - Players
       requestBody:
         content:
           application/json:
@@ -1215,7 +1215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/League/MatchService.ts:
+  /volleyball-matches/gen/volleyball-matches/api/Matches/MatchService.ts:
     get:
       summary: List Match
       parameters:
@@ -1236,7 +1236,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - League
+        - Matches
       responses:
         200:
           description: Successful Request
@@ -1267,7 +1267,7 @@ paths:
     post:
       summary: Create Match
       tags:
-        - League
+        - Matches
       requestBody:
         content:
           application/json:
@@ -1299,7 +1299,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/League/MatchService.ts/{id}:
+  /volleyball-matches/gen/volleyball-matches/api/Matches/MatchService.ts/{id}:
     get:
       summary: Get Match by Id
       parameters:
@@ -1310,7 +1310,7 @@ paths:
           schema:
             type: string
       tags:
-        - League
+        - Matches
       responses:
         200:
           description: Successful Request
@@ -1348,7 +1348,7 @@ paths:
           schema:
             type: string
       tags:
-        - League
+        - Matches
       requestBody:
         content:
           application/json:
@@ -1396,7 +1396,7 @@ paths:
           schema:
             type: string
       tags:
-        - League
+        - Matches
       responses:
         204:
           description: Successful Request
@@ -1418,11 +1418,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/League/MatchService.ts/count:
+  /volleyball-matches/gen/volleyball-matches/api/Matches/MatchService.ts/count:
     get:
       summary: Count the number of Match
       tags:
-        - League
+        - Matches
       responses:
         200:
           description: Successful Request
@@ -1446,7 +1446,7 @@ paths:
     post:
       summary: Count the number of Match by MatchFilterOptions
       tags:
-        - League
+        - Matches
       requestBody:
         content:
           application/json:
@@ -1536,11 +1536,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/League/MatchService.ts/search:
+  /volleyball-matches/gen/volleyball-matches/api/Matches/MatchService.ts/search:
     post:
       summary: Search Match by MatchFilterOptions
       tags:
-        - League
+        - Matches
       requestBody:
         content:
           application/json:
@@ -1631,7 +1631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/CoachService.ts:
+  /volleyball-matches/gen/volleyball-matches/api/Coaches/CoachService.ts:
     get:
       summary: List Coach
       parameters:
@@ -1652,7 +1652,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Teams
+        - Coaches
       responses:
         200:
           description: Successful Request
@@ -1683,7 +1683,7 @@ paths:
     post:
       summary: Create Coach
       tags:
-        - Teams
+        - Coaches
       requestBody:
         content:
           application/json:
@@ -1715,7 +1715,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/CoachService.ts/{id}:
+  /volleyball-matches/gen/volleyball-matches/api/Coaches/CoachService.ts/{id}:
     get:
       summary: Get Coach by Id
       parameters:
@@ -1726,7 +1726,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Coaches
       responses:
         200:
           description: Successful Request
@@ -1764,7 +1764,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Coaches
       requestBody:
         content:
           application/json:
@@ -1812,7 +1812,7 @@ paths:
           schema:
             type: string
       tags:
-        - Teams
+        - Coaches
       responses:
         204:
           description: Successful Request
@@ -1834,11 +1834,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/CoachService.ts/count:
+  /volleyball-matches/gen/volleyball-matches/api/Coaches/CoachService.ts/count:
     get:
       summary: Count the number of Coach
       tags:
-        - Teams
+        - Coaches
       responses:
         200:
           description: Successful Request
@@ -1862,7 +1862,7 @@ paths:
     post:
       summary: Count the number of Coach by CoachFilterOptions
       tags:
-        - Teams
+        - Coaches
       requestBody:
         content:
           application/json:
@@ -1944,11 +1944,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /volleyball-matches/gen/volleyball-matches/api/Teams/CoachService.ts/search:
+  /volleyball-matches/gen/volleyball-matches/api/Coaches/CoachService.ts/search:
     post:
       summary: Search Coach by CoachFilterOptions
       tags:
-        - Teams
+        - Coaches
       requestBody:
         content:
           application/json:

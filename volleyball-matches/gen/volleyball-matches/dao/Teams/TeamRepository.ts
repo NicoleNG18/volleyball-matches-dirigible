@@ -81,7 +81,7 @@ interface TeamUpdateEntityEvent extends TeamEntityEvent {
 export class TeamRepository {
 
     private static readonly DEFINITION = {
-        table: "VOLEYBALL_MATCHES_TEAM",
+        table: "VOLLEYBALL_MATCHES_TEAM",
         properties: [
             {
                 name: "Id",
@@ -122,7 +122,7 @@ export class TeamRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "VOLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAM",
             entity: entity,
             key: {
                 name: "Id",
@@ -138,7 +138,7 @@ export class TeamRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "VOLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAM",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -169,7 +169,7 @@ export class TeamRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "VOLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAM",
             entity: entity,
             key: {
                 name: "Id",
@@ -184,7 +184,7 @@ export class TeamRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLEYBALL_MATCHES_TEAM"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLLEYBALL_MATCHES_TEAM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

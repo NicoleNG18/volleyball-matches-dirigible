@@ -1,5 +1,0 @@
-{
-    "module": "volleyball-matches/gen/ui/launchpad/Home/view.js",
-    "extensionPoint": "volleyball-matches-view",
-    "description": "volleyball-matches - Application View"
-}
