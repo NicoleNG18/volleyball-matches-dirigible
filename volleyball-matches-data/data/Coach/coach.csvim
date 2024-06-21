@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "table": "VOLLEYBALL_MATCHES_LEAGUE",
+      "table": "VOLLEYBALL_MATCHES_COACH",
       "schema": "PUBLIC",
-      "file": "/volleyball-matches-data/data/League/league.csv",
+      "file": "/volleyball-matches-data/data/Coach/coach.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",

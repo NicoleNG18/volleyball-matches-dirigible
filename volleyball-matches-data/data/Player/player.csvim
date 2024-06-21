@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "table": "VOLLEYBALL_MATCHES_LEAGUE",
+      "table": "VOLLEYBALL_MATCHES_PLAYER",
       "schema": "PUBLIC",
-      "file": "/volleyball-matches-data/data/League/league.csv",
+      "file": "/volleyball-matches-data/data/Player/player.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
