@@ -15,10 +15,27 @@ class InvoiceService {
     public teamData() {
 
         let allTeams = this.teamDao.findAll();
-        console.log(allTeams);
+
+        let vnlTeams = this.teamDao.findAll({
+            $filter: {
+                equals: {
+                    League: 1
+                }
+            }
+        });
+
+        let olympicTeams = this.teamDao.findAll({
+            $filter: {
+                equals: {
+                    League: 2
+                }
+            }
+        });
 
         return {
-            "AllTeams": allTeams
+            "AllTeams": allTeams,
+            "VnlTeams": vnlTeams,
+            "OlympicTeams": olympicTeams
         };
 
     }

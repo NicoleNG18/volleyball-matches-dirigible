@@ -16,6 +16,7 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
     async function getTeamData() {
         try {
             const response = await $http.get("/services/ts/volleyball-ui/api/TeamService.ts/teamData");
+            console.log(response.data);
             return response.data;
         } catch (error) {
             console.error('Error fetching product data:', error);
@@ -26,6 +27,8 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         const teamData = await getTeamData();
         $scope.$apply(function () {
             $scope.allTeams = teamData.AllTeams;
+            $scope.vnlTeams = teamData.VnlTeams;
+            $scope.olympicTeams = teamData.OlympicTeams;
         });
     });
 

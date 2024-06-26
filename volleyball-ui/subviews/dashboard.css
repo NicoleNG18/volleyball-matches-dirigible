@@ -3,3 +3,47 @@
     margin-bottom: 3em;
     font-weight: bold;
 }
+
+table {
+    border: 1px solid black;
+}
+
+p {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+.teams-tables {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    padding: 5em;
+}
+
+tr .table-cell {
+    text-align: center;
+    outline: none;
+    padding: 0 .5rem;
+    background-color: var(--sapList_HeaderBackground);
+    border-bottom: var(--fdTable_Header_Horizontal_Border);
+    border-top: var(--fdTable_Header_Horizontal_Border);
+    border-left: var(--fdTable_Header_Horizontal_Border);
+    border-right: var(--fdTable_Header_Horizontal_Border);
+    color: var(--sapList_HeaderTextColor);
+    font-weight: var(--fdTable_Header_Cell_Font_Weight);
+    height: var(--fdTable_Header_Cell_Height);
+}
+
+.table-cell-body {
+    text-align: center;
+    outline: none;
+    padding: 0 .5rem;
+    border-bottom: var(--fdTable_Header_Horizontal_Border);
+    border-top: var(--fdTable_Header_Horizontal_Border);
+    border-left: var(--fdTable_Header_Horizontal_Border);
+    border-right: var(--fdTable_Header_Horizontal_Border);
+    color: var(--sapList_HeaderTextColor);
+    font-weight: var(--fdTable_Header_Cell_Font_Weight);
+    height: var(--fdTable_Header_Cell_Height);
+}

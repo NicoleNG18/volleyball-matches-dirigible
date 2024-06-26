@@ -25,21 +25,41 @@
             <h1> Welcome to Volleyball matches Dashboard </h1>
         </div>
 
-        <div dir="ltr">
-            <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
-                <thead class="fd-table__header">
-                    <tr class="fd-table__row">
-                        <th class="fd-table__cell" scope="col">Name</th>
-                        <th class="fd-table__cell" scope="col">League</th>
-                    </tr>
-                </thead>
-                <tbody class="fd-table__body" id="top_products">
-                    <tr ng-repeat="next in allTeams">
-                        <td class="fd-table__cell">{{next.Name}}</td>
-                        <td class="fd-table__cell">{{optionsLeagueValue(next.League)}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <section>
+
+            <p>Teams</p>
+
+            <div dir="ltr" class="teams-tables">
+                <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                    <thead class="fd-table__header">
+                        <tr class="fd-table__row">
+                            <th class="table-cell" scope="col">Name</th>
+                            <th class="table-cell" scope="col">League</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fd-table__body" id="top_products">
+                        <tr ng-repeat="next in vnlTeams">
+                            <td class="table-cell-body">{{next.Name}}</td>
+                            <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                    <thead class="fd-table__header">
+                        <tr class="fd-table__row">
+                            <th class="table-cell" scope="col">Name</th>
+                            <th class="table-cell" scope="col">League</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fd-table__body" id="top_products">
+                        <tr ng-repeat="next in olympicTeams">
+                            <td class="table-cell-body">{{next.Name}}</td>
+                            <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
 
     </body>
