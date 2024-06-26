@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="launchpad" ng-controller="LaunchpadViewController" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title dg-brand-title></title>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
+        <script type="text/javascript" src="services/navigation.js"></script>
+        <theme></theme>
+        <script type="text/javascript"
+            src="/services/js/resources-core/services/loader.js?id=application-perspective-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-perspective-css" />
+        <script type="text/javascript" src="js/navigation.js"></script>
+
+    </head>
+
+    <body>
+        <ide-header menu-ext-id="codbex-hestia-menu"></ide-header>
+        <ide-contextmenu></ide-contextmenu>
+        <div class="dg-hbox dg-fill-parent">
+            <fd-vertical-nav can-scroll="true" class="dg-border-right"
+                style="box-shadow:none;max-height:calc(100vh - 4.375rem)">
+                <fd-vertical-nav-main-section aria-label="main navigation">
+                    <fd-list-navigation-item ng-click="switchView('dashboard')">
+                        <fd-list-navigation-item-icon glyph="sap-icon--home">
+                        </fd-list-navigation-item-icon>
+                        <span fd-list-navigation-item-text>Dashboard</span>
+                    </fd-list-navigation-item>
+        </div>
+
+        <ide-dialogs extension-points="::extraExtensionPoints"></ide-dialogs>
+        <ide-status-bar></ide-status-bar>
+    </body>
+
+</html>

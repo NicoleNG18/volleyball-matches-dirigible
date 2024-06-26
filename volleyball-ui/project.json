@@ -1,0 +1,27 @@
+{
+    "guid": "volleyball-ui",
+    "dependencies": [
+        {
+            "guid": "volleyball-matches",
+            "type": "git",
+            "url": "https://github.com/NicoleNG18/volleyball-matches-dirigible.git",
+            "branch": "master"
+        }
+    ],
+    "actions": [
+        {
+            "name": "Build TypeScript",
+            "commands": [
+                {
+                    "os": "unix",
+                    "command": "tsc"
+                },
+                {
+                    "os": "windows",
+                    "command": "cmd /c tsc"
+                }
+            ],
+            "registry": "true"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="dashboard" ng-controller="DashboardController">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Fake favicon to silent console errors and not waste a get request -->
+        <link rel="icon" sizes="any" href="/favicon/favicon.svg">
+        <!-- Title directive -->
+        <title>Volleyball matches</title>
+        <!-- IDE Core UI -->
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <script type="text/javascript" src="dashboard.js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <link type="text/css" rel="stylesheet" href="dashboard.css" />
+        <theme></theme>
+    </head>
+
+    <body fd-scrollbar class="fd-padding-begin-end--tiny">
+
+        <div class="header-dashboard">
+            <h1> Welcome to Volleyball matches Dashboard </h1>
+        </div>
+
+        <div dir="ltr">
+            <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                <thead class="fd-table__header">
+                    <tr class="fd-table__row">
+                        <th class="fd-table__cell" scope="col">Name</th>
+                        <th class="fd-table__cell" scope="col">League</th>
+                    </tr>
+                </thead>
+                <tbody class="fd-table__body" id="top_products">
+                    <tr ng-repeat="next in allTeams">
+                        <td class="fd-table__cell">{{next.Name}}</td>
+                        <td class="fd-table__cell">{{optionsLeagueValue(next.League)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </body>

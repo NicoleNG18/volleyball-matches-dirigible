@@ -79,6 +79,7 @@
                         "dataName": "TEAM_LEAGUE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
+                        "feedPropertyName": "",
                         "isRequiredProperty": "true",
                         "name": "League",
                         "widgetDropDownKey": "Id",

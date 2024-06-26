@@ -5,25 +5,25 @@ import { dao as daoApi } from "sdk/db";
 
 export interface MatchEntity {
     readonly Id: number;
+    League?: number;
+    Winnerteam?: number;
+    Lostteam?: number;
     Set1?: string;
     Set2?: string;
     Set3?: string;
     Set4?: string;
     Set5?: string;
-    League?: number;
-    Winnerteam?: number;
-    Lostteam?: number;
 }
 
 export interface MatchCreateEntity {
+    readonly League?: number;
+    readonly Winnerteam?: number;
+    readonly Lostteam?: number;
     readonly Set1?: string;
     readonly Set2?: string;
     readonly Set3?: string;
     readonly Set4?: string;
     readonly Set5?: string;
-    readonly League?: number;
-    readonly Winnerteam?: number;
-    readonly Lostteam?: number;
 }
 
 export interface MatchUpdateEntity extends MatchCreateEntity {
@@ -34,80 +34,80 @@ export interface MatchEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            League?: number | number[];
+            Winnerteam?: number | number[];
+            Lostteam?: number | number[];
             Set1?: string | string[];
             Set2?: string | string[];
             Set3?: string | string[];
             Set4?: string | string[];
             Set5?: string | string[];
-            League?: number | number[];
-            Winnerteam?: number | number[];
-            Lostteam?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
+            League?: number | number[];
+            Winnerteam?: number | number[];
+            Lostteam?: number | number[];
             Set1?: string | string[];
             Set2?: string | string[];
             Set3?: string | string[];
             Set4?: string | string[];
             Set5?: string | string[];
-            League?: number | number[];
-            Winnerteam?: number | number[];
-            Lostteam?: number | number[];
         };
         contains?: {
             Id?: number;
+            League?: number;
+            Winnerteam?: number;
+            Lostteam?: number;
             Set1?: string;
             Set2?: string;
             Set3?: string;
             Set4?: string;
             Set5?: string;
-            League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
         };
         greaterThan?: {
             Id?: number;
+            League?: number;
+            Winnerteam?: number;
+            Lostteam?: number;
             Set1?: string;
             Set2?: string;
             Set3?: string;
             Set4?: string;
             Set5?: string;
-            League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
+            League?: number;
+            Winnerteam?: number;
+            Lostteam?: number;
             Set1?: string;
             Set2?: string;
             Set3?: string;
             Set4?: string;
             Set5?: string;
-            League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
         };
         lessThan?: {
             Id?: number;
+            League?: number;
+            Winnerteam?: number;
+            Lostteam?: number;
             Set1?: string;
             Set2?: string;
             Set3?: string;
             Set4?: string;
             Set5?: string;
-            League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
+            League?: number;
+            Winnerteam?: number;
+            Lostteam?: number;
             Set1?: string;
             Set2?: string;
             Set3?: string;
             Set4?: string;
             Set5?: string;
-            League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
         };
     },
     $select?: (keyof MatchEntity)[],
@@ -145,6 +145,21 @@ export class MatchRepository {
                 autoIncrement: true,
             },
             {
+                name: "League",
+                column: "MATCH_LEAGUE",
+                type: "INTEGER",
+            },
+            {
+                name: "Winnerteam",
+                column: "MATCH_WINNER_TEAM",
+                type: "INTEGER",
+            },
+            {
+                name: "Lostteam",
+                column: "MATCH_LOST_TEAM",
+                type: "INTEGER",
+            },
+            {
                 name: "Set1",
                 column: "MATCH_SET_1",
                 type: "VARCHAR",
@@ -168,21 +183,6 @@ export class MatchRepository {
                 name: "Set5",
                 column: "MATCH_SET_5",
                 type: "VARCHAR",
-            },
-            {
-                name: "League",
-                column: "MATCH_LEAGUE",
-                type: "INTEGER",
-            },
-            {
-                name: "Winnerteam",
-                column: "MATCH_WINNER_TEAM",
-                type: "INTEGER",
-            },
-            {
-                name: "Lostteam",
-                column: "MATCH_LOST_TEAM",
-                type: "INTEGER",
             }
         ]
     };

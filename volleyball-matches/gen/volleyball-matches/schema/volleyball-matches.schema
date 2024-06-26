@@ -84,6 +84,21 @@
                         "name": "MATCH_ID"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_LEAGUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_WINNER_TEAM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_LOST_TEAM"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 10,
                         "nullable": true,
@@ -112,21 +127,6 @@
                         "length": 10,
                         "nullable": true,
                         "name": "MATCH_SET_5"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "MATCH_LEAGUE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "MATCH_WINNER_TEAM"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "MATCH_LOST_TEAM"
                     }
                 ]
             },

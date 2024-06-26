@@ -42,6 +42,15 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
+			if (entity.League !== undefined) {
+				filter.$filter.equals.League = entity.League;
+			}
+			if (entity.Winnerteam !== undefined) {
+				filter.$filter.equals.Winnerteam = entity.Winnerteam;
+			}
+			if (entity.Lostteam !== undefined) {
+				filter.$filter.equals.Lostteam = entity.Lostteam;
+			}
 			if (entity.Set1) {
 				filter.$filter.contains.Set1 = entity.Set1;
 			}
@@ -56,15 +65,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Set5) {
 				filter.$filter.contains.Set5 = entity.Set5;
-			}
-			if (entity.League !== undefined) {
-				filter.$filter.equals.League = entity.League;
-			}
-			if (entity.Winnerteam !== undefined) {
-				filter.$filter.equals.Winnerteam = entity.Winnerteam;
-			}
-			if (entity.Lostteam !== undefined) {
-				filter.$filter.equals.Lostteam = entity.Lostteam;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

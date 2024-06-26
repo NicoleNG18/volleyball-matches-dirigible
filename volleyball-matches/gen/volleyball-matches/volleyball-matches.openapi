@@ -2526,6 +2526,15 @@ components:
         Id:
           type: integer
           format: int32
+        League:
+          type: integer
+          format: int32
+        Winnerteam:
+          type: integer
+          format: int32
+        Lostteam:
+          type: integer
+          format: int32
         Set1:
           type: string
           minLength: 0
@@ -2546,15 +2555,6 @@ components:
           type: string
           minLength: 0
           maxLength: 10
-        League:
-          type: integer
-          format: int32
-        Winnerteam:
-          type: integer
-          format: int32
-        Lostteam:
-          type: integer
-          format: int32
     MatchFilterOptions:
       type: object
       properties:
@@ -2572,6 +2572,30 @@ components:
                       items:
                         type: integer
                         format: int32
+                League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Winnerteam:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Lostteam:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Set1:
                   oneOf:
                     - type: string
@@ -2627,30 +2651,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 10
-                League:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Winnerteam:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Lostteam:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             notEquals:
               type: object
               properties:
@@ -2662,6 +2662,30 @@ components:
                       items:
                         type: integer
                         format: int32
+                League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Winnerteam:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Lostteam:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Set1:
                   oneOf:
                     - type: string
@@ -2717,34 +2741,13 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 10
-                League:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Winnerteam:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Lostteam:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             contains:
               type: object
               properties:
                 Id:
+                League:
+                Winnerteam:
+                Lostteam:
                 Set1:
                   type: string
                   minLength: 0
@@ -2765,15 +2768,21 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 10
-                League:
-                Winnerteam:
-                Lostteam:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
+                League:
+                  type: integer
+                  format: int32
+                Winnerteam:
+                  type: integer
+                  format: int32
+                Lostteam:
+                  type: integer
+                  format: int32
                 Set1:
                   type: string
                   minLength: 0
@@ -2794,21 +2803,21 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 10
-                League:
-                  type: integer
-                  format: int32
-                Winnerteam:
-                  type: integer
-                  format: int32
-                Lostteam:
-                  type: integer
-                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
+                League:
+                  type: integer
+                  format: int32
+                Winnerteam:
+                  type: integer
+                  format: int32
+                Lostteam:
+                  type: integer
+                  format: int32
                 Set1:
                   type: string
                   minLength: 0
@@ -2829,21 +2838,21 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 10
-                League:
-                  type: integer
-                  format: int32
-                Winnerteam:
-                  type: integer
-                  format: int32
-                Lostteam:
-                  type: integer
-                  format: int32
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
+                League:
+                  type: integer
+                  format: int32
+                Winnerteam:
+                  type: integer
+                  format: int32
+                Lostteam:
+                  type: integer
+                  format: int32
                 Set1:
                   type: string
                   minLength: 0
@@ -2864,21 +2873,21 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 10
-                League:
-                  type: integer
-                  format: int32
-                Winnerteam:
-                  type: integer
-                  format: int32
-                Lostteam:
-                  type: integer
-                  format: int32
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
+                League:
+                  type: integer
+                  format: int32
+                Winnerteam:
+                  type: integer
+                  format: int32
+                Lostteam:
+                  type: integer
+                  format: int32
                 Set1:
                   type: string
                   minLength: 0
@@ -2899,23 +2908,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 10
-                League:
-                  type: integer
-                  format: int32
-                Winnerteam:
-                  type: integer
-                  format: int32
-                Lostteam:
-                  type: integer
-                  format: int32
         $select:
           type: array
-          example: ["Id", "Set1", "Set2", "Set3", "Set4", "Set5", "League", "Winnerteam", "Lostteam"]
+          example: ["Id", "League", "Winnerteam", "Lostteam", "Set1", "Set2", "Set3", "Set4", "Set5"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Set1,Set2,Set3,Set4,Set5,League,Winnerteam,Lostteam"
+            example: "Id,League,Winnerteam,Lostteam,Set1,Set2,Set3,Set4,Set5"
         $order:
           type: string
           enum: ["asc", "desc"]
