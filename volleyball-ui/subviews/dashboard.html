@@ -58,7 +58,34 @@
                         </tr>
                     </tbody>
                 </table>
-
+                <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                    <thead class="fd-table__header">
+                        <tr class="fd-table__row">
+                            <th class="table-cell" scope="col">Name</th>
+                            <th class="table-cell" scope="col">League</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fd-table__body" id="top_products">
+                        <tr ng-repeat="next in europeanTeams">
+                            <td class="table-cell-body">{{next.Name}}</td>
+                            <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                    <thead class="fd-table__header">
+                        <tr class="fd-table__row">
+                            <th class="table-cell" scope="col">Name</th>
+                            <th class="table-cell" scope="col">League</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fd-table__body" id="top_products">
+                        <tr ng-repeat="next in worldChampTeams">
+                            <td class="table-cell-body">{{next.Name}}</td>
+                            <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 

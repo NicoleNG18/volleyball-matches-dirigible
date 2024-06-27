@@ -26,9 +26,10 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
     angular.element($document[0]).ready(async function () {
         const teamData = await getTeamData();
         $scope.$apply(function () {
-            $scope.allTeams = teamData.AllTeams;
             $scope.vnlTeams = teamData.VnlTeams;
             $scope.olympicTeams = teamData.OlympicTeams;
+            $scope.europeanTeams = teamData.EuropeanTeams;
+            $scope.worldChampTeams = teamData.WorldChampTeams;
         });
     });
 

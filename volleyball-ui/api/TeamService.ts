@@ -14,8 +14,6 @@ class InvoiceService {
     @Get("/teamData")
     public teamData() {
 
-        let allTeams = this.teamDao.findAll();
-
         let vnlTeams = this.teamDao.findAll({
             $filter: {
                 equals: {
@@ -32,10 +30,27 @@ class InvoiceService {
             }
         });
 
+        let europeanTeams = this.teamDao.findAll({
+            $filter: {
+                equals: {
+                    League: 3
+                }
+            }
+        });
+
+        let worldChampTeams = this.teamDao.findAll({
+            $filter: {
+                equals: {
+                    League: 4
+                }
+            }
+        });
+
         return {
-            "AllTeams": allTeams,
             "VnlTeams": vnlTeams,
-            "OlympicTeams": olympicTeams
+            "OlympicTeams": olympicTeams,
+            "EuropeanTeams": europeanTeams,
+            "WorldChampTeams": worldChampTeams
         };
 
     }
