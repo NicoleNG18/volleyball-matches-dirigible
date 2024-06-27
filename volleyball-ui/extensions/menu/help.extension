@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "volleyball-ui-menu",
+    "module": "resources-core/services/menus/help.js",
+    "description": "Help menu"
+}

@@ -3,7 +3,7 @@ import { TeamRepository as TeamDao } from "volleyball-matches/gen/volleyball-mat
 import { Controller, Get } from "sdk/http";
 
 @Controller
-class InvoiceService {
+class TeamService {
 
     private readonly teamDao;
 
