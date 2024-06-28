@@ -2177,6 +2177,9 @@ components:
         League:
           type: integer
           format: int32
+        Points:
+          type: integer
+          format: int32
     TeamFilterOptions:
       type: object
       properties:
@@ -2206,6 +2209,14 @@ components:
                         minLength: 0
                         maxLength: 50
                 League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Points:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2243,6 +2254,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Points:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -2252,6 +2271,7 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                Points:
             greaterThan:
               type: object
               properties:
@@ -2263,6 +2283,9 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                  type: integer
+                  format: int32
+                Points:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -2278,6 +2301,9 @@ components:
                 League:
                   type: integer
                   format: int32
+                Points:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -2289,6 +2315,9 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                  type: integer
+                  format: int32
+                Points:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -2304,14 +2333,17 @@ components:
                 League:
                   type: integer
                   format: int32
+                Points:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "League"]
+          example: ["Id", "Name", "League", "Points"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,League"
+            example: "Id,Name,League,Points"
         $order:
           type: string
           enum: ["asc", "desc"]

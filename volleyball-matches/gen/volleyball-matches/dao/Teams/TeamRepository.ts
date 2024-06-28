@@ -7,11 +7,13 @@ export interface TeamEntity {
     readonly Id: number;
     Name?: string;
     League?: number;
+    Points?: number;
 }
 
 export interface TeamCreateEntity {
     readonly Name?: string;
     readonly League?: number;
+    readonly Points?: number;
 }
 
 export interface TeamUpdateEntity extends TeamCreateEntity {
@@ -24,36 +26,43 @@ export interface TeamEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
+            Points?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
+            Points?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             League?: number;
+            Points?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             League?: number;
+            Points?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
+            Points?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             League?: number;
+            Points?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
+            Points?: number;
         };
     },
     $select?: (keyof TeamEntity)[],
@@ -99,6 +108,11 @@ export class TeamRepository {
                 name: "League",
                 column: "TEAM_LEAGUE",
                 type: "INTEGER",
+            },
+            {
+                name: "Points",
+                column: "TEAM_POINTS",
+                type: "INTEGER",
             }
         ]
     };
@@ -119,6 +133,9 @@ export class TeamRepository {
     }
 
     public create(entity: TeamCreateEntity): number {
+        if (entity.Points === undefined || entity.Points === null) {
+            (entity as TeamEntity).Points = 0;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

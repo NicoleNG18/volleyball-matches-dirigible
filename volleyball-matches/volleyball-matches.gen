@@ -213,6 +213,28 @@
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "dataDefaultValue": "0",
+          "dataName": "TEAM_POINTS",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "name": "Points",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Points",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Team",

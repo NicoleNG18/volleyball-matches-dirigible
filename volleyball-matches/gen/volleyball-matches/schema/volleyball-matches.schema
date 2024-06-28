@@ -40,6 +40,12 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "TEAM_LEAGUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "defaultValue": "0",
+                        "nullable": true,
+                        "name": "TEAM_POINTS"
                     }
                 ]
             },
