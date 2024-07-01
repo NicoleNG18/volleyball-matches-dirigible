@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="match-generate.js"></script>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <theme></theme>
+        <link rel="stylesheet" href="/services/web/volleyball-matches-ext/generate/Match/match-generate.css">
+        <script src="/services/web/volleyball-matches-ext/generate/Match/match-generate-controller.js">
+        </script>
+    </head>
+
+    <body>
+        <div class="dialog" id="dialog" ng-show="showDialog">
+            <div class="dialog-content">
+                <div class="title">Generate match</div>
+                <div class="line"></div>
+                <div class="main-text">
+                    <p>Are you sure you want to generate the Match?</p>
+                </div>
+                <div class="dialog-buttons">
+                    <button ng-click="generateMatch()" class="button">Yes</button>
+                    <button ng-click="closeDialog()" class="button">No</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

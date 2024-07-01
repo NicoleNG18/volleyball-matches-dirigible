@@ -1,0 +1,5 @@
+{
+    "module": "volleyball-matches-ext/generate/Match/match-generate.js",
+    "extensionPoint": "",
+    "description": "Generate match action"
+}
