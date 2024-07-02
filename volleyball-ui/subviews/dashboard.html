@@ -29,6 +29,45 @@
             <fd-panel expanded="true" class="fd-col fd-col--12">
                 <fd-panel-header>
                     <fd-panel-expand></fd-panel-expand>
+                    <h4 fd-panel-title>Top five teams by points</h4>
+                </fd-panel-header>
+                <fd-panel-content aria-label="Teams-contents">
+                    <div class="is-cozy">
+
+                        <div dir="ltr">
+                            <div class="fd-toolbar fd-toolbar--title fd-toolbar-active">
+                                <span class="fd-toolbar__spacer fd-toolbar__spacer--auto"></span>
+                            </div>
+                            <table class="fd-table">
+                                <thead class="fd-table__header">
+                                    <tr class="fd-table__row">
+                                        <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
+                                            scope="col">Team</th>
+                                        <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
+                                            scope="col">League</th>
+                                        <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
+                                            scope="col">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fd-table__body">
+                                    <tr class="fd-table__row fd-table__row--hoverable" ng-repeat="next in topFiveTeams">
+                                        <td class="fd-table__cell">{{next.Name}}</td>
+                                        <td class="fd-table__cell">{{optionsLeagueValue(next.League)}}</td>
+                                        <td class="fd-table__cell">{{next.Points}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fd-panel-content>
+            </fd-panel>
+
+        </section>
+
+        <section>
+            <fd-panel expanded="true" class="fd-col fd-col--12">
+                <fd-panel-header>
+                    <fd-panel-expand></fd-panel-expand>
                     <h4 fd-panel-title>Teams</h4>
                 </fd-panel-header>
                 <fd-panel-content aria-label="Teams-contents">
