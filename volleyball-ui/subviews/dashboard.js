@@ -41,6 +41,7 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
             $scope.olympicTeams = teamData.OlympicTeams;
             $scope.europeanTeams = teamData.EuropeanTeams;
             $scope.worldChampTeams = teamData.WorldChampTeams;
+            $scope.topFiveTeams = teamData.TopFiveTeams;
             $scope.serbia = playerData.Serbia;
             $scope.france = playerData.France;
             $scope.brazil = playerData.Brazil;

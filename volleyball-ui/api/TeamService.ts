@@ -1,6 +1,7 @@
 import { TeamRepository as TeamDao } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamRepository";
 
 import { Controller, Get } from "sdk/http";
+import { query } from "sdk/db";
 
 @Controller
 class TeamService {
@@ -46,11 +47,21 @@ class TeamService {
             }
         });
 
+        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, t.TEAM_POINTS AS POINTS FROM VOLLEYBALL_MATCHES_TEAM t ORDER BY POINTS DESC LIMIT 5";
+        let resultset = query.execute(sqlUnits);
+
+        const topFiveTeams = resultset.map(row => ({
+            Name: row.NAME,
+            League: row.LEAGUE,
+            Points: row.POINTS
+        }));
+
         return {
             "VnlTeams": vnlTeams,
             "OlympicTeams": olympicTeams,
             "EuropeanTeams": europeanTeams,
-            "WorldChampTeams": worldChampTeams
+            "WorldChampTeams": worldChampTeams,
+            "TopFiveTeams": topFiveTeams
         };
 
     }
