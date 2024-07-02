@@ -1,5 +1,5 @@
 {
     "extensionPoint": "ide-subview",
-    "module": "/volleyball-ui/services/coaches.js",
+    "module": "volleyball-ui/services/coaches.js",
     "description": "Coaches extension"
 }

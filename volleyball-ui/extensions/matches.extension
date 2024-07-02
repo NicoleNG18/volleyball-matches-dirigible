@@ -1,5 +1,5 @@
 {
     "extensionPoint": "ide-subview",
-    "module": "/volleyball-ui/services/matches.js",
+    "module": "volleyball-ui/services/matches.js",
     "description": "Matches view extension"
 }
