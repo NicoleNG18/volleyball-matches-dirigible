@@ -1,5 +1,5 @@
 {
     "extensionPoint": "ide-subview",
     "module": "volleyball-ui/services/league.js",
-    "description": "League view"
+    "description": "League subview"
 }

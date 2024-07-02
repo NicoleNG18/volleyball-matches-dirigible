@@ -30,55 +30,40 @@
                             <span fd-list-navigation-item-text>Dashboard</span>
                         </fd-list-navigation-item>
                         <fd-list-navigation-group-header>Leagues</fd-list-navigation-group-header>
-                        <fd-list-navigation-item ng-init="purchasingExpanded = false" expandable="true"
-                            ng-click="purchasingExpanded = !purchasingExpanded" is-expanded="purchasingExpanded">
-                            <fd-list-navigation-item-icon glyph="sap-icon--folder">
-                            </fd-list-navigation-item-icon>
+                        <fd-list-navigation-item ng-click="switchView('leagues', $event)">
                             <span fd-list-navigation-item-text>Leagues</span>
                         </fd-list-navigation-item>
-                        <fd-list-navigation-item ng-init="purchasingExpanded = false" expandable="true"
-                            ng-click="purchasingExpanded = !purchasingExpanded" is-expanded="purchasingExpanded">
-                            <fd-list-navigation-item-icon glyph="sap-icon--folder">
-                            </fd-list-navigation-item-icon>
+                        <fd-list-navigation-item ng-click="switchView('matches', $event)">
                             <span fd-list-navigation-item-text>Matches</span>
                         </fd-list-navigation-item>
                         <fd-list-navigation-group-header>Teams</fd-list-navigation-group-header>
-                        <fd-list-navigation-item ng-init="purchasingExpanded = false" expandable="true"
-                            ng-click="purchasingExpanded = !purchasingExpanded" is-expanded="purchasingExpanded">
-                            <fd-list-navigation-item-icon glyph="sap-icon--folder">
-                            </fd-list-navigation-item-icon>
+                        <fd-list-navigation-item ng-click="switchView('teams', $event)">
                             <span fd-list-navigation-item-text>Teams</span>
                         </fd-list-navigation-item>
-                        <fd-list-navigation-item ng-init="purchasingExpanded = false" expandable="true"
-                            ng-click="purchasingExpanded = !purchasingExpanded" is-expanded="purchasingExpanded">
-                            <fd-list-navigation-item-icon glyph="sap-icon--folder">
-                            </fd-list-navigation-item-icon>
+                        <fd-list-navigation-item ng-click="switchView('players', $event)">
                             <span fd-list-navigation-item-text>Players</span>
                         </fd-list-navigation-item>
-                        <fd-list-navigation-item ng-init="purchasingExpanded = false" expandable="true"
-                            ng-click="purchasingExpanded = !purchasingExpanded" is-expanded="purchasingExpanded">
-                            <fd-list-navigation-item-icon glyph="sap-icon--folder">
-                            </fd-list-navigation-item-icon>
+                        <fd-list-navigation-item ng-click="switchView('coaches', $event)">
                             <span fd-list-navigation-item-text>Coaches</span>
                         </fd-list-navigation-item>
                 </fd-vertical-nav-main-section>
             </fd-vertical-nav>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-dashboard" dg-type="normal"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-dashboard" dg-type="normal"
                 ng-show="currentViewId === 'dashboard'">
             </embedded-view>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-leagues" dg-type="subview"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-leagues" dg-type="subview"
                 ng-show="currentViewId === 'leagues'">
             </embedded-view>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-leagues" dg-type="subview"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-matches" dg-type="subview"
                 ng-show="currentViewId === 'matches'">
             </embedded-view>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-leagues" dg-type="subview"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-teams" dg-type="subview"
                 ng-show="currentViewId === 'teams'">
             </embedded-view>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-leagues" dg-type="subview"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-players" dg-type="subview"
                 ng-show="currentViewId === 'players'">
             </embedded-view>
-            <embedded-view class="dg-fill-parent" view-id="volleyball-matches-leagues" dg-type="subview"
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-coaches" dg-type="subview"
                 ng-show="currentViewId === 'coaches'">
             </embedded-view>
         </div>

@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "ide-subview",
+    "module": "/volleyball-ui/services/teams.js",
+    "description": "Teams extension"
+}
