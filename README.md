@@ -15,5 +15,5 @@ Usage:
 
 License:
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+This application is released under the Eclipse Public License - v 2.0. For more details, please refer to the LICENSE file.
 
