@@ -6,14 +6,14 @@
 exports.getTile = function () {
     return {
         group: "volleyball-matches",
-        name: "League",
-        caption: "Manage entity League",
-        tooltip: "League",
+        name: "Season",
+        caption: "Manage entity Season",
+        tooltip: "Season",
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
-        location: "/services/web/volleyball-matches/gen/volleyball-matches/ui/League/index.html",
+        location: "/services/web/volleyball-matches/gen/volleyball-matches/ui/Season/index.html",
         order: "100",
-        groupOrder: "300",
+        groupOrder: "306",
     };
 };

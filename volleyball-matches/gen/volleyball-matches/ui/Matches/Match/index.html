@@ -29,13 +29,11 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>League</th>
-						<th fd-table-header-cell>Winner</th>
-						<th fd-table-header-cell>Lost</th>
-						<th fd-table-header-cell>Set1</th>
-						<th fd-table-header-cell>Set2</th>
-						<th fd-table-header-cell>Set3</th>
-						<th fd-table-header-cell>Set4</th>
-						<th fd-table-header-cell>Set5</th>
+						<th fd-table-header-cell>Guest</th>
+						<th fd-table-header-cell>Host</th>
+						<th fd-table-header-cell>Result</th>
+						<th fd-table-header-cell>PointsGuest</th>
+						<th fd-table-header-cell>PointsHost</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -49,16 +47,14 @@
 							{{optionsLeagueValue(next.League)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsWinnerteamValue(next.Winnerteam)}}
+							{{optionsGuestValue(next.Guest)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsLostteamValue(next.Lostteam)}}
+							{{optionsHostValue(next.Host)}}
 						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Set1}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Set2}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Set3}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Set4}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Set5}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Result}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PointsGuest}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PointsHost}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

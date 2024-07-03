@@ -15,8 +15,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsLeague = params.optionsLeague;
-			$scope.optionsWinnerteam = params.optionsWinnerteam;
-			$scope.optionsLostteam = params.optionsLostteam;
+			$scope.optionsGuest = params.optionsGuest;
+			$scope.optionsHost = params.optionsHost;
 		}
 
 		$scope.filter = function () {
@@ -45,26 +45,20 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.League !== undefined) {
 				filter.$filter.equals.League = entity.League;
 			}
-			if (entity.Winnerteam !== undefined) {
-				filter.$filter.equals.Winnerteam = entity.Winnerteam;
+			if (entity.Guest !== undefined) {
+				filter.$filter.equals.Guest = entity.Guest;
 			}
-			if (entity.Lostteam !== undefined) {
-				filter.$filter.equals.Lostteam = entity.Lostteam;
+			if (entity.Host !== undefined) {
+				filter.$filter.equals.Host = entity.Host;
 			}
-			if (entity.Set1) {
-				filter.$filter.contains.Set1 = entity.Set1;
+			if (entity.Result) {
+				filter.$filter.contains.Result = entity.Result;
 			}
-			if (entity.Set2) {
-				filter.$filter.contains.Set2 = entity.Set2;
+			if (entity.PointsGuest !== undefined) {
+				filter.$filter.equals.PointsGuest = entity.PointsGuest;
 			}
-			if (entity.Set3) {
-				filter.$filter.contains.Set3 = entity.Set3;
-			}
-			if (entity.Set4) {
-				filter.$filter.contains.Set4 = entity.Set4;
-			}
-			if (entity.Set5) {
-				filter.$filter.contains.Set5 = entity.Set5;
+			if (entity.PointsHost !== undefined) {
+				filter.$filter.equals.PointsHost = entity.PointsHost;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

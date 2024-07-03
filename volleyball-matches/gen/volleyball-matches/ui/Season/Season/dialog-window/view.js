@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "League-filter",
-    label: "League Filter",
-    link: "/services/web/volleyball-matches/gen/volleyball-matches/ui/League/League/dialog-filter/index.html",
-    perspectiveName: "League",
+    id: "Season-details",
+    label: "Season",
+    link: "/services/web/volleyball-matches/gen/volleyball-matches/ui/Season/Season/dialog-window/index.html",
+    perspectiveName: "Season",
 };
 
 if (typeof exports !== 'undefined') {

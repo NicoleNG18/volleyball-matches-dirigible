@@ -1,5 +1,5 @@
 {
-    "module": "volleyball-matches/gen/volleyball-matches/ui/League/League/dialog-filter/view.js",
+    "module": "volleyball-matches/gen/volleyball-matches/ui/Season/Season/dialog-filter/view.js",
     "extensionPoint": "volleyball-matches-dialog-window",
     "description": "volleyball-matches - Application Dialog Window"
 }

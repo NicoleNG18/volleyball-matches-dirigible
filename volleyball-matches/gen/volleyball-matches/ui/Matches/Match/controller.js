@@ -108,8 +108,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsLeague: $scope.optionsLeague,
-				optionsWinnerteam: $scope.optionsWinnerteam,
-				optionsLostteam: $scope.optionsLostteam,
+				optionsGuest: $scope.optionsGuest,
+				optionsHost: $scope.optionsHost,
 			});
 		};
 
@@ -117,8 +117,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Match-filter", {
 				entity: $scope.filterEntity,
 				optionsLeague: $scope.optionsLeague,
-				optionsWinnerteam: $scope.optionsWinnerteam,
-				optionsLostteam: $scope.optionsLostteam,
+				optionsGuest: $scope.optionsGuest,
+				optionsHost: $scope.optionsHost,
 			});
 		};
 
@@ -128,8 +128,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "create",
 				entity: {},
 				optionsLeague: $scope.optionsLeague,
-				optionsWinnerteam: $scope.optionsWinnerteam,
-				optionsLostteam: $scope.optionsLostteam,
+				optionsGuest: $scope.optionsGuest,
+				optionsHost: $scope.optionsHost,
 			}, null, false);
 		};
 
@@ -138,8 +138,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "update",
 				entity: entity,
 				optionsLeague: $scope.optionsLeague,
-				optionsWinnerteam: $scope.optionsWinnerteam,
-				optionsLostteam: $scope.optionsLostteam,
+				optionsGuest: $scope.optionsGuest,
+				optionsHost: $scope.optionsHost,
 			}, null, false);
 		};
 
@@ -174,8 +174,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsLeague = [];
-		$scope.optionsWinnerteam = [];
-		$scope.optionsLostteam = [];
+		$scope.optionsGuest = [];
+		$scope.optionsHost = [];
 
 
 		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts").then(function (response) {
@@ -188,7 +188,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
-			$scope.optionsWinnerteam = response.data.map(e => {
+			$scope.optionsGuest = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -197,7 +197,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
-			$scope.optionsLostteam = response.data.map(e => {
+			$scope.optionsHost = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -213,18 +213,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsWinnerteamValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsWinnerteam.length; i++) {
-				if ($scope.optionsWinnerteam[i].value === optionKey) {
-					return $scope.optionsWinnerteam[i].text;
+		$scope.optionsGuestValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsGuest.length; i++) {
+				if ($scope.optionsGuest[i].value === optionKey) {
+					return $scope.optionsGuest[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsLostteamValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsLostteam.length; i++) {
-				if ($scope.optionsLostteam[i].value === optionKey) {
-					return $scope.optionsLostteam[i].text;
+		$scope.optionsHostValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsHost.length; i++) {
+				if ($scope.optionsHost[i].value === optionKey) {
+					return $scope.optionsHost[i].text;
 				}
 			}
 			return null;

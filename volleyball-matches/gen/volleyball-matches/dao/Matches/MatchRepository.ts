@@ -6,24 +6,20 @@ import { dao as daoApi } from "sdk/db";
 export interface MatchEntity {
     readonly Id: number;
     League?: number;
-    Winnerteam?: number;
-    Lostteam?: number;
-    Set1?: string;
-    Set2?: string;
-    Set3?: string;
-    Set4?: string;
-    Set5?: string;
+    Guest?: number;
+    Host?: number;
+    Result?: string;
+    PointsGuest?: number;
+    PointsHost?: number;
 }
 
 export interface MatchCreateEntity {
     readonly League?: number;
-    readonly Winnerteam?: number;
-    readonly Lostteam?: number;
-    readonly Set1?: string;
-    readonly Set2?: string;
-    readonly Set3?: string;
-    readonly Set4?: string;
-    readonly Set5?: string;
+    readonly Guest?: number;
+    readonly Host?: number;
+    readonly Result?: string;
+    readonly PointsGuest?: number;
+    readonly PointsHost?: number;
 }
 
 export interface MatchUpdateEntity extends MatchCreateEntity {
@@ -35,79 +31,65 @@ export interface MatchEntityOptions {
         equals?: {
             Id?: number | number[];
             League?: number | number[];
-            Winnerteam?: number | number[];
-            Lostteam?: number | number[];
-            Set1?: string | string[];
-            Set2?: string | string[];
-            Set3?: string | string[];
-            Set4?: string | string[];
-            Set5?: string | string[];
+            Guest?: number | number[];
+            Host?: number | number[];
+            Result?: string | string[];
+            PointsGuest?: number | number[];
+            PointsHost?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             League?: number | number[];
-            Winnerteam?: number | number[];
-            Lostteam?: number | number[];
-            Set1?: string | string[];
-            Set2?: string | string[];
-            Set3?: string | string[];
-            Set4?: string | string[];
-            Set5?: string | string[];
+            Guest?: number | number[];
+            Host?: number | number[];
+            Result?: string | string[];
+            PointsGuest?: number | number[];
+            PointsHost?: number | number[];
         };
         contains?: {
             Id?: number;
             League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
-            Set1?: string;
-            Set2?: string;
-            Set3?: string;
-            Set4?: string;
-            Set5?: string;
+            Guest?: number;
+            Host?: number;
+            Result?: string;
+            PointsGuest?: number;
+            PointsHost?: number;
         };
         greaterThan?: {
             Id?: number;
             League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
-            Set1?: string;
-            Set2?: string;
-            Set3?: string;
-            Set4?: string;
-            Set5?: string;
+            Guest?: number;
+            Host?: number;
+            Result?: string;
+            PointsGuest?: number;
+            PointsHost?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
-            Set1?: string;
-            Set2?: string;
-            Set3?: string;
-            Set4?: string;
-            Set5?: string;
+            Guest?: number;
+            Host?: number;
+            Result?: string;
+            PointsGuest?: number;
+            PointsHost?: number;
         };
         lessThan?: {
             Id?: number;
             League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
-            Set1?: string;
-            Set2?: string;
-            Set3?: string;
-            Set4?: string;
-            Set5?: string;
+            Guest?: number;
+            Host?: number;
+            Result?: string;
+            PointsGuest?: number;
+            PointsHost?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             League?: number;
-            Winnerteam?: number;
-            Lostteam?: number;
-            Set1?: string;
-            Set2?: string;
-            Set3?: string;
-            Set4?: string;
-            Set5?: string;
+            Guest?: number;
+            Host?: number;
+            Result?: string;
+            PointsGuest?: number;
+            PointsHost?: number;
         };
     },
     $select?: (keyof MatchEntity)[],
@@ -150,39 +132,29 @@ export class MatchRepository {
                 type: "INTEGER",
             },
             {
-                name: "Winnerteam",
+                name: "Guest",
                 column: "MATCH_WINNER_TEAM",
                 type: "INTEGER",
             },
             {
-                name: "Lostteam",
+                name: "Host",
                 column: "MATCH_LOST_TEAM",
                 type: "INTEGER",
             },
             {
-                name: "Set1",
-                column: "MATCH_SET_1",
+                name: "Result",
+                column: "MATCH_RESULT",
                 type: "VARCHAR",
             },
             {
-                name: "Set2",
-                column: "MATCH_SET2",
-                type: "VARCHAR",
+                name: "PointsGuest",
+                column: "MATCH_POINTSGUEST",
+                type: "INTEGER",
             },
             {
-                name: "Set3",
-                column: "MATCH_SET_3",
-                type: "VARCHAR",
-            },
-            {
-                name: "Set4",
-                column: "MATCH_SET_4",
-                type: "VARCHAR",
-            },
-            {
-                name: "Set5",
-                column: "MATCH_SET_5",
-                type: "VARCHAR",
+                name: "PointsHost",
+                column: "MATCH_POINTSHOST",
+                type: "INTEGER",
             }
         ]
     };

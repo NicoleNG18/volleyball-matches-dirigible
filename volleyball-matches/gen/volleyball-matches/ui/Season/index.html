@@ -65,7 +65,7 @@
                     };
                     Extensions.get('view', 'volleyball-matches-view').then(function (response) {
                         $scope.layoutModel = {
-                            views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'League').map(e => e.id)
+                            views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'Season').map(e => e.id)
                         };
                         $scope.state.isBusy = false;
                     }, function (error) {

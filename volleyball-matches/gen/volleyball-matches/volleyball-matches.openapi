@@ -14,6 +14,7 @@ tags:
   - name: Players
   - name: Matches
   - name: Coaches
+  - name: Season
 paths:
   /volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts:
     get:
@@ -1460,11 +1461,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Set1: "abcd"
-                      Set2: "abcd"
-                      Set3: "abcd"
-                      Set4: "abcd"
-                      Set5: "abcd"
+                      Result: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1486,11 +1483,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Set1: "abcd"
-                      Set2: "abcd"
-                      Set3: "abcd"
-                      Set4: "abcd"
-                      Set5: "abcd"
+                      Result: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1554,11 +1547,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Set1: "abcd"
-                      Set2: "abcd"
-                      Set3: "abcd"
-                      Set4: "abcd"
-                      Set5: "abcd"
+                      Result: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1580,11 +1569,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Set1: "abcd"
-                      Set2: "abcd"
-                      Set3: "abcd"
-                      Set4: "abcd"
-                      Set5: "abcd"
+                      Result: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2031,6 +2016,390 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts:
+    get:
+      summary: List Season
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Season
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Season'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Season
+      tags:
+        - Season
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Season'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts/{id}:
+    get:
+      summary: Get Season by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Season
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Season'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Season by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Season
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Season'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Season by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Season
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts/count:
+    get:
+      summary: Count the number of Season
+      tags:
+        - Season
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Season by SeasonFilterOptions
+      tags:
+        - Season
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts/search:
+    post:
+      summary: Search Season by SeasonFilterOptions
+      tags:
+        - Season
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Season'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     League:
@@ -2045,6 +2414,9 @@ components:
           type: string
           minLength: 0
           maxLength: 50
+        Season:
+          type: integer
+          format: int32
     LeagueFilterOptions:
       type: object
       properties:
@@ -2073,6 +2445,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                Season:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -2095,6 +2475,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                Season:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -2103,6 +2491,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Season:
             greaterThan:
               type: object
               properties:
@@ -2113,6 +2502,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Season:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -2123,6 +2515,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Season:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -2133,6 +2528,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Season:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -2143,14 +2541,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                Season:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name"]
+          example: ["Id", "Name", "Season"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name"
+            example: "Id,Name,Season"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -2551,9 +2952,12 @@ components:
     Match:
       type: object
       required:
-        - Set1
-        - Set2
-        - Set3
+        - League
+        - Guest
+        - Host
+        - Result
+        - PointsGuest
+        - PointsHost
       properties:
         Id:
           type: integer
@@ -2561,32 +2965,22 @@ components:
         League:
           type: integer
           format: int32
-        Winnerteam:
+        Guest:
           type: integer
           format: int32
-        Lostteam:
+        Host:
           type: integer
           format: int32
-        Set1:
+        Result:
           type: string
           minLength: 0
-          maxLength: 10
-        Set2:
-          type: string
-          minLength: 0
-          maxLength: 10
-        Set3:
-          type: string
-          minLength: 0
-          maxLength: 10
-        Set4:
-          type: string
-          minLength: 0
-          maxLength: 10
-        Set5:
-          type: string
-          minLength: 0
-          maxLength: 10
+          maxLength: 20
+        PointsGuest:
+          type: integer
+          format: int32
+        PointsHost:
+          type: integer
+          format: int32
     MatchFilterOptions:
       type: object
       properties:
@@ -2612,7 +3006,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Winnerteam:
+                Guest:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2620,7 +3014,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Lostteam:
+                Host:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2628,61 +3022,33 @@ components:
                       items:
                         type: integer
                         format: int32
-                Set1:
+                Result:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 10
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 10
-                Set2:
+                        maxLength: 20
+                PointsGuest:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set3:
+                        type: integer
+                        format: int32
+                PointsHost:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set4:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set5:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -2702,7 +3068,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Winnerteam:
+                Guest:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2710,7 +3076,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Lostteam:
+                Host:
                   oneOf:
                     - type: integer
                       format: int32
@@ -2718,88 +3084,46 @@ components:
                       items:
                         type: integer
                         format: int32
-                Set1:
+                Result:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 10
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 10
-                Set2:
+                        maxLength: 20
+                PointsGuest:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set3:
+                        type: integer
+                        format: int32
+                PointsHost:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set4:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
-                Set5:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 10
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 10
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
                 Id:
                 League:
-                Winnerteam:
-                Lostteam:
-                Set1:
+                Guest:
+                Host:
+                Result:
                   type: string
                   minLength: 0
-                  maxLength: 10
-                Set2:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set3:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set4:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set5:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 20
+                PointsGuest:
+                PointsHost:
             greaterThan:
               type: object
               properties:
@@ -2809,32 +3133,22 @@ components:
                 League:
                   type: integer
                   format: int32
-                Winnerteam:
+                Guest:
                   type: integer
                   format: int32
-                Lostteam:
+                Host:
                   type: integer
                   format: int32
-                Set1:
+                Result:
                   type: string
                   minLength: 0
-                  maxLength: 10
-                Set2:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set3:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set4:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set5:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 20
+                PointsGuest:
+                  type: integer
+                  format: int32
+                PointsHost:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -2844,32 +3158,22 @@ components:
                 League:
                   type: integer
                   format: int32
-                Winnerteam:
+                Guest:
                   type: integer
                   format: int32
-                Lostteam:
+                Host:
                   type: integer
                   format: int32
-                Set1:
+                Result:
                   type: string
                   minLength: 0
-                  maxLength: 10
-                Set2:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set3:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set4:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set5:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 20
+                PointsGuest:
+                  type: integer
+                  format: int32
+                PointsHost:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -2879,32 +3183,22 @@ components:
                 League:
                   type: integer
                   format: int32
-                Winnerteam:
+                Guest:
                   type: integer
                   format: int32
-                Lostteam:
+                Host:
                   type: integer
                   format: int32
-                Set1:
+                Result:
                   type: string
                   minLength: 0
-                  maxLength: 10
-                Set2:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set3:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set4:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set5:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 20
+                PointsGuest:
+                  type: integer
+                  format: int32
+                PointsHost:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -2914,40 +3208,30 @@ components:
                 League:
                   type: integer
                   format: int32
-                Winnerteam:
+                Guest:
                   type: integer
                   format: int32
-                Lostteam:
+                Host:
                   type: integer
                   format: int32
-                Set1:
+                Result:
                   type: string
                   minLength: 0
-                  maxLength: 10
-                Set2:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set3:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set4:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
-                Set5:
-                  type: string
-                  minLength: 0
-                  maxLength: 10
+                  maxLength: 20
+                PointsGuest:
+                  type: integer
+                  format: int32
+                PointsHost:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "League", "Winnerteam", "Lostteam", "Set1", "Set2", "Set3", "Set4", "Set5"]
+          example: ["Id", "League", "Guest", "Host", "Result", "PointsGuest", "PointsHost"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,League,Winnerteam,Lostteam,Set1,Set2,Set3,Set4,Set5"
+            example: "Id,League,Guest,Host,Result,PointsGuest,PointsHost"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3109,6 +3393,98 @@ components:
         $sort:
           - type: string
             example: "Id,Name,Team"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Season:
+      type: object
+      required:
+        - Year
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Year:
+    SeasonFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Year:
+                  oneOf:
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Year:
+                  oneOf:
+            contains:
+              type: object
+              properties:
+                Id:
+                Year:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Year:
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Year:
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Year:
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Year:
+        $select:
+          type: array
+          example: ["Id", "Year"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Year"
         $order:
           type: string
           enum: ["asc", "desc"]

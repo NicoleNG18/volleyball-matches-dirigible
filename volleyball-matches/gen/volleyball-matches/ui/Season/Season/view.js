@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "League",
-    label: "League",
+    id: "Season",
+    label: "Season",
     factory: "frame",
     region: "center",
-    link: "/services/web/volleyball-matches/gen/volleyball-matches/ui/League/League/index.html",
-    perspectiveName: "League",
+    link: "/services/web/volleyball-matches/gen/volleyball-matches/ui/Season/Season/index.html",
+    perspectiveName: "Season",
 };
 
 if (typeof exports !== 'undefined') {

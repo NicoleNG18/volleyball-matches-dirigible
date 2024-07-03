@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'volleyball-matches.League.League';
+		messageHubProvider.eventIdPrefix = 'volleyball-matches.Season.Season';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts";
+		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'volleyball-matches-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "League" && e.view === "League" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "League" && e.view === "League" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Season" && e.view === "Season" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Season" && e.view === "Season" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("League", `Unable to count League: '${response.message}'`);
+					messageHub.showAlertError("Season", `Unable to count Season: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,9 +89,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("League", `Unable to list/filter League: '${response.message}'`);
+						messageHub.showAlertError("Season", `Unable to list/filter Season: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.Year) {
+							e.Year = new Date(e.Year);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});
@@ -104,28 +111,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("League-details", {
+			messageHub.showDialogWindow("Season-details", {
 				action: "select",
 				entity: entity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("League-filter", {
+			messageHub.showDialogWindow("Season-filter", {
 				entity: $scope.filterEntity,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("League-details", {
+			messageHub.showDialogWindow("Season-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("League-details", {
+			messageHub.showDialogWindow("Season-details", {
 				action: "update",
 				entity: entity,
 			}, null, false);
@@ -134,8 +141,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete League?',
-				`Are you sure you want to delete League? This action cannot be undone.`,
+				'Delete Season?',
+				`Are you sure you want to delete Season? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -150,7 +157,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("League", `Unable to delete League: '${response.message}'`);
+							messageHub.showAlertError("Season", `Unable to delete Season: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

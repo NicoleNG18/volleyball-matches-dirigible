@@ -25,8 +25,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsLeague = params.optionsLeague;
-			$scope.optionsWinnerteam = params.optionsWinnerteam;
-			$scope.optionsLostteam = params.optionsLostteam;
+			$scope.optionsGuest = params.optionsGuest;
+			$scope.optionsHost = params.optionsHost;
 		}
 
 		$scope.create = function () {

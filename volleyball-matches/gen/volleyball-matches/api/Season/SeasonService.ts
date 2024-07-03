@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { MatchRepository, MatchEntityOptions } from "../../dao/Matches/MatchRepository";
+import { SeasonRepository, SeasonEntityOptions } from "../../dao/Season/SeasonRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("volleyball-matches-Matches-Match", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("volleyball-matches-Season-Season", ["validate"]);
 
 @Controller
-class MatchService {
+class SeasonService {
 
-    private readonly repository = new MatchRepository();
+    private readonly repository = new SeasonRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: MatchEntityOptions = {
+            const options: SeasonEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class MatchService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/volleyball-matches/gen/volleyball-matches/api/Matches/MatchService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class MatchService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Match not found");
+                HttpUtils.sendResponseNotFound("Season not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class MatchService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Match not found");
+                HttpUtils.sendResponseNotFound("Season not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,26 +119,8 @@ class MatchService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.League === null || entity.League === undefined) {
-            throw new ValidationError(`The 'League' property is required, provide a valid value`);
-        }
-        if (entity.Guest === null || entity.Guest === undefined) {
-            throw new ValidationError(`The 'Guest' property is required, provide a valid value`);
-        }
-        if (entity.Host === null || entity.Host === undefined) {
-            throw new ValidationError(`The 'Host' property is required, provide a valid value`);
-        }
-        if (entity.Result === null || entity.Result === undefined) {
-            throw new ValidationError(`The 'Result' property is required, provide a valid value`);
-        }
-        if (entity.Result?.length > 20) {
-            throw new ValidationError(`The 'Result' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.PointsGuest === null || entity.PointsGuest === undefined) {
-            throw new ValidationError(`The 'PointsGuest' property is required, provide a valid value`);
-        }
-        if (entity.PointsHost === null || entity.PointsHost === undefined) {
-            throw new ValidationError(`The 'PointsHost' property is required, provide a valid value`);
+        if (entity.Year === null || entity.Year === undefined) {
+            throw new ValidationError(`The 'Year' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

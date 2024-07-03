@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'League',
-	name: 'Leagues',
-	link: '/services/web/volleyball-matches/gen/volleyball-matches/ui/League/index.html',
-	order: 300,
-	icon: '/services/web/resources/unicons/document-info.svg',
+	id: 'Season',
+	name: 'Season',
+	link: '/services/web/volleyball-matches/gen/volleyball-matches/ui/Season/index.html',
+	order: 306,
+	icon: '/services/web/resources/unicons/watch.svg',
 };
 
 if (typeof exports !== 'undefined') {
