@@ -1,5 +1,5 @@
 {
     "extensionPoint": "ide-view",
     "module": "volleyball-ui/services/dashboard.js",
-    "description": "Volleyball matches - dashboard"
+    "description": "Dashboard extension"
 }

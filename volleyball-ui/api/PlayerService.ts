@@ -14,7 +14,7 @@ class PlayerService {
     @Get("/playerData")
     public playerData() {
 
-        let bulgarians = this.playerDao.findAll({
+        let bulgarian = this.playerDao.findAll({
             $filter: {
                 equals: {
                     Team: 1
@@ -46,7 +46,6 @@ class PlayerService {
             }
         });
 
-
         let brazilian = this.playerDao.findAll({
             $filter: {
                 equals: {
@@ -54,7 +53,6 @@ class PlayerService {
                 }
             }
         });
-
 
         let dutch = this.playerDao.findAll({
             $filter: {
@@ -113,21 +111,20 @@ class PlayerService {
         });
 
         return {
-            "Serbia": serbian,
-            "Turkey": turkish,
-            "USA": american,
-            "Brazil": brazilian,
-            "Canada": canadian,
-            "China": chineese,
-            "France": french,
-            "Bulgaria": bulgarians,
-            "Slovenia": slovenian,
-            "Netherlands": dutch,
-            "Poland": polish,
-            "Cuba": cuban
+            "Serbian": serbian,
+            "Turkish": turkish,
+            "American": american,
+            "Brazilian": brazilian,
+            "Canadian": canadian,
+            "Chineese": chineese,
+            "French": french,
+            "Bulgarian": bulgarian,
+            "Slovenian": slovenian,
+            "Dutch": dutch,
+            "Polish": polish,
+            "Cuban": cuban
         };
 
     }
-
 
 }

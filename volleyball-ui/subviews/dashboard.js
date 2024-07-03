@@ -33,27 +33,12 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         }
     }
 
-    angular.element($document[0]).ready(async function () {
-        const teamData = await getTeamData();
-        const playerData = await getPlayerData();
-        $scope.$apply(function () {
-            $scope.vnlTeams = teamData.VnlTeams;
-            $scope.olympicTeams = teamData.OlympicTeams;
-            $scope.europeanTeams = teamData.EuropeanTeams;
-            $scope.worldChampTeams = teamData.WorldChampTeams;
-            $scope.topFiveTeams = teamData.TopFiveTeams;
-            $scope.serbia = playerData.Serbia;
-            $scope.france = playerData.France;
-            $scope.brazil = playerData.Brazil;
-            $scope.bulgaria = playerData.Bulgaria;
-            $scope.slovenia = playerData.Slovenia;
-            $scope.cuba = playerData.Cuba;
-            $scope.canada = playerData.Canada;
-            $scope.turkey = playerData.Turkey;
-            $scope.usa = playerData.USA;
-            $scope.poland = playerData.Poland;
-            $scope.china = playerData.China;
-            $scope.netherlands = playerData.Netherlands;
+    $http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
+        $scope.optionsTeam = response.data.map(e => {
+            return {
+                value: e.Id,
+                text: e.Name
+            }
         });
     });
 
@@ -75,15 +60,6 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         return null;
     };
 
-    $http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
-        $scope.optionsTeam = response.data.map(e => {
-            return {
-                value: e.Id,
-                text: e.Name
-            }
-        });
-    });
-
     $scope.optionsTeamValue = function (optionKey) {
         for (let i = 0; i < $scope.optionsTeam.length; i++) {
             if ($scope.optionsTeam[i].value === optionKey) {
@@ -93,4 +69,27 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         return null;
     };
 
+    angular.element($document[0]).ready(async function () {
+        const teamData = await getTeamData();
+        const playerData = await getPlayerData();
+        $scope.$apply(function () {
+            $scope.vnlTeams = teamData.VnlTeams;
+            $scope.olympicTeams = teamData.OlympicTeams;
+            $scope.europeanChampTeams = teamData.EuropeanChampTeams;
+            $scope.worldChampTeams = teamData.WorldChampTeams;
+            $scope.topFiveTeams = teamData.TopFiveTeams;
+            $scope.serbian = playerData.Serbian;
+            $scope.french = playerData.French;
+            $scope.brazilian = playerData.Brazilian;
+            $scope.bulgarian = playerData.Bulgarian;
+            $scope.slovenian = playerData.Slovenian;
+            $scope.cuban = playerData.Cuban;
+            $scope.canadian = playerData.Canadian;
+            $scope.turkish = playerData.Turkish;
+            $scope.american = playerData.American;
+            $scope.polish = playerData.Polish;
+            $scope.chineese = playerData.Chineese;
+            $scope.dutch = playerData.Dutch;
+        });
+    });
 }]);

@@ -31,7 +31,7 @@ class TeamService {
             }
         });
 
-        let europeanTeams = this.teamDao.findAll({
+        let europeanChampTeams = this.teamDao.findAll({
             $filter: {
                 equals: {
                     League: 3
@@ -59,12 +59,9 @@ class TeamService {
         return {
             "VnlTeams": vnlTeams,
             "OlympicTeams": olympicTeams,
-            "EuropeanTeams": europeanTeams,
+            "EuropeanChampTeams": europeanChampTeams,
             "WorldChampTeams": worldChampTeams,
             "TopFiveTeams": topFiveTeams
         };
-
     }
-
-
 }
