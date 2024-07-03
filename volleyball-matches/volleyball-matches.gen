@@ -166,7 +166,7 @@
       "perspectiveRole": "",
       "title": "League",
       "tooltip": "League",
-      "type": "DEPENDENT",
+      "type": "PRIMARY",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
