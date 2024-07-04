@@ -43,6 +43,17 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_SEASON",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/season.csv",
+      "header": false,
+      "useHeaderNames": false,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
     }
   ]
 }
