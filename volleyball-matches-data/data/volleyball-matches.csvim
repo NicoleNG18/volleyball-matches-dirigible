@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "table": "VOLLEYBALL_MATCHES_COACH",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/coach.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_TEAM",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/team.csv",
+      "header": false,
+      "useHeaderNames": false,
+      "delimField": ";",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_PLAYER",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/player.csv",
+      "header": false,
+      "useHeaderNames": false,
+      "delimField": ";",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_LEAGUE",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/league.csv",
+      "header": false,
+      "useHeaderNames": false,
+      "delimField": ";",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    }
+  ]
+}
