@@ -122,6 +122,9 @@ class SeasonService {
         if (entity.Year === null || entity.Year === undefined) {
             throw new ValidationError(`The 'Year' property is required, provide a valid value`);
         }
+        if (entity.Year?.length > 4) {
+            throw new ValidationError(`The 'Year' exceeds the maximum length of [4] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

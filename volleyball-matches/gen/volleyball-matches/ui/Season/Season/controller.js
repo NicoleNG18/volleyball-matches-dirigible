@@ -92,13 +92,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("Season", `Unable to list/filter Season: '${response.message}'`);
 						return;
 					}
-
-					response.data.forEach(e => {
-						if (e.Year) {
-							e.Year = new Date(e.Year);
-						}
-					});
-
 					$scope.data = response.data;
 				});
 			});

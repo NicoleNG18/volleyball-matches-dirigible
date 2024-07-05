@@ -37,8 +37,8 @@
 	                                name="Year"
 	                                state="{{ forms.details['Year'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.Year"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="4.0 || -1"
 	                                type="text"
 	                                placeholder="Enter Year">
 	                            </fd-input>

@@ -163,7 +163,8 @@
                         "name": "SEASON_ID"
                     },
                     {
-                        "type": "DATE",
+                        "type": "VARCHAR",
+                        "length": 4,
                         "name": "SEASON_YEAR"
                     }
                 ]

@@ -126,10 +126,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "Season",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Year",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "League_Season",
           "relationshipEntityName": "Season",
           "relationshipEntityPerspectiveName": "Season",
@@ -141,7 +143,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Season",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -172,7 +174,8 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "hasDropdowns": true
     },
     {
       "properties": [
@@ -751,12 +754,15 @@
           "inputRule": ""
         },
         {
+          "dataLength": "4",
           "dataName": "SEASON_YEAR",
           "dataNullable": false,
-          "dataType": "DATE",
+          "dataType": "VARCHAR",
           "dataUnique": true,
           "isRequiredProperty": true,
           "name": "Year",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
@@ -767,9 +773,10 @@
           "isCalculatedProperty": false,
           "widgetLabel": "Year",
           "widgetDropdownUrl": "",
-          "dataTypeJava": "date",
-          "dataTypeTypescript": "Date",
-          "isDateType": true,
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 4,
           "inputRule": ""
         }
       ],
@@ -798,8 +805,7 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id",
-      "hasDates": true
+      "primaryKeysString": "Id"
     }
   ]
 }

@@ -2,15 +2,14 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
-import { EntityUtils } from "../utils/EntityUtils";
 
 export interface SeasonEntity {
     readonly Id: number;
-    Year: Date;
+    Year: string;
 }
 
 export interface SeasonCreateEntity {
-    readonly Year: Date;
+    readonly Year: string;
 }
 
 export interface SeasonUpdateEntity extends SeasonCreateEntity {
@@ -21,31 +20,31 @@ export interface SeasonEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Year?: Date | Date[];
+            Year?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
-            Year?: Date | Date[];
+            Year?: string | string[];
         };
         contains?: {
             Id?: number;
-            Year?: Date;
+            Year?: string;
         };
         greaterThan?: {
             Id?: number;
-            Year?: Date;
+            Year?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Year?: Date;
+            Year?: string;
         };
         lessThan?: {
             Id?: number;
-            Year?: Date;
+            Year?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Year?: Date;
+            Year?: string;
         };
     },
     $select?: (keyof SeasonEntity)[],
@@ -85,7 +84,7 @@ export class SeasonRepository {
             {
                 name: "Year",
                 column: "SEASON_YEAR",
-                type: "DATE",
+                type: "VARCHAR",
                 required: true
             }
         ]
@@ -98,20 +97,15 @@ export class SeasonRepository {
     }
 
     public findAll(options?: SeasonEntityOptions): SeasonEntity[] {
-        return this.dao.list(options).map((e: SeasonEntity) => {
-            EntityUtils.setDate(e, "Year");
-            return e;
-        });
+        return this.dao.list(options);
     }
 
     public findById(id: number): SeasonEntity | undefined {
         const entity = this.dao.find(id);
-        EntityUtils.setDate(entity, "Year");
         return entity ?? undefined;
     }
 
     public create(entity: SeasonCreateEntity): number {
-        EntityUtils.setLocalDate(entity, "Year");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -127,7 +121,6 @@ export class SeasonRepository {
     }
 
     public update(entity: SeasonUpdateEntity): void {
-        // EntityUtils.setLocalDate(entity, "Year");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
