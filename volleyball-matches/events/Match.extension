@@ -1,0 +1,5 @@
+{
+    "module": "volleyball-matches/events/MatchHandler.ts",
+    "description": "Match extension",
+    "extensionPoint": "volleyball-matches-Matches-Match"
+}

@@ -1,5 +1,0 @@
-{
-    "module": "/volleyball-matches/events/TeamHandler.ts",
-    "description": "Team points extension",
-    "extensionPoint": "volleyball-matches-Matches-Match"
-}
