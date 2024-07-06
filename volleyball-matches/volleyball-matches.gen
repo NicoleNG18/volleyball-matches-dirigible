@@ -126,13 +126,15 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "Season",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "League_Season",
+          "relationshipType": "COMPOSITION",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Year",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "League_Season",
           "relationshipEntityName": "Season",
           "relationshipEntityPerspectiveName": "Season",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -175,6 +177,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
+      "masterEntity": "Season",
+      "masterEntityId": "Season",
       "hasDropdowns": true
     },
     {

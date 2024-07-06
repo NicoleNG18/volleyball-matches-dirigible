@@ -22,7 +22,6 @@ export const trigger = (event) => {
         TeamDao.update(hostTeam);
         TeamDao.update(guestTeam);
 
-
     } else if (event.operation === "update") {
     } else if (event.operation === "delete") {
     } else {
