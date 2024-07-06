@@ -54,6 +54,17 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_TEAMPOINTS",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/teampoints.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
     }
   ]
 }

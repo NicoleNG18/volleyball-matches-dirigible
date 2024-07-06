@@ -19,7 +19,6 @@ export interface TeamPointsCreateEntity {
     readonly OlympicGames?: number;
     readonly EuropeanChamp?: number;
     readonly WorldChamp?: number;
-    readonly SumPoints?: number;
 }
 
 export interface TeamPointsUpdateEntity extends TeamPointsCreateEntity {
@@ -175,6 +174,8 @@ export class TeamPointsRepository {
     }
 
     public create(entity: TeamPointsCreateEntity): number {
+        // @ts-ignore
+        (entity as TeamPointsEntity).SumPoints = TEAMPOINTS_WORLDCHAMP+TEAMPOINTS_EUROPEANCHAMP+TEAMPOINTS_OLYMPICGAMES+TEAMPOINTS_VNL;
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -190,6 +191,8 @@ export class TeamPointsRepository {
     }
 
     public update(entity: TeamPointsUpdateEntity): void {
+        // @ts-ignore
+        (entity as TeamPointsEntity).SumPoints = TEAMPOINTS_WORLDCHAMP+TEAMPOINTS_EUROPEANCHAMP+TEAMPOINTS_OLYMPICGAMES+TEAMPOINTS_VNL;
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

@@ -535,9 +535,12 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "TEAMPOINTS_WORLDCHAMP+TEAMPOINTS_EUROPEANCHAMP+TEAMPOINTS_OLYMPICGAMES+TEAMPOINTS_VNL",
+                        "calculatedPropertyExpressionUpdate": "TEAMPOINTS_WORLDCHAMP+TEAMPOINTS_EUROPEANCHAMP+TEAMPOINTS_OLYMPICGAMES+TEAMPOINTS_VNL",
                         "dataName": "TEAMPOINTS_SUMPOINTS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
+                        "isCalculatedProperty": "true",
                         "name": "SumPoints",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
