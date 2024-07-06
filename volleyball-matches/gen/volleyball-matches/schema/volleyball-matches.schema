@@ -170,6 +170,49 @@
                 ]
             },
             {
+                "name": "VOLLEYBALL_MATCHES_TEAMPOINTS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "TEAMPOINTS_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_TEAM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_VNL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_OLYMPICGAMES"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_EUROPEANCHAMP"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_WORLDCHAMP"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAMPOINTS_SUMPOINTS"
+                    }
+                ]
+            },
+            {
                 "name": "League_Season",
                 "type": "foreignKey",
                 "table": "VOLLEYBALL_MATCHES_LEAGUE",
@@ -229,6 +272,15 @@
                 "table": "VOLLEYBALL_MATCHES_COACH",
                 "constraintName": "Coach_Team",
                 "columns": "COACH_TEAM",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
+                "referencedColumns": "TEAM_ID"
+            },
+            {
+                "name": "TeamPoints_Team",
+                "type": "foreignKey",
+                "table": "VOLLEYBALL_MATCHES_TEAMPOINTS",
+                "constraintName": "TeamPoints_Team",
+                "columns": "TEAMPOINTS_TEAM",
                 "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             }
