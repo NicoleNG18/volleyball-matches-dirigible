@@ -30,6 +30,9 @@
                             <span fd-list-navigation-item-text>Dashboard</span>
                         </fd-list-navigation-item>
                         <fd-list-navigation-group-header>Leagues</fd-list-navigation-group-header>
+                        <fd-list-navigation-item ng-click="switchView('seasons', $event)">
+                            <span fd-list-navigation-item-text>Seasons</span>
+                        </fd-list-navigation-item>
                         <fd-list-navigation-item ng-click="switchView('leagues', $event)">
                             <span fd-list-navigation-item-text>Leagues</span>
                         </fd-list-navigation-item>
@@ -53,6 +56,9 @@
             </embedded-view>
             <embedded-view class="dg-fill-parent" view-id="volleyball-ui-leagues" dg-type="subview"
                 ng-show="currentViewId === 'leagues'">
+            </embedded-view>
+            <embedded-view class="dg-fill-parent" view-id="volleyball-ui-seasons" dg-type="subview"
+                ng-show="currentViewId === 'seasons'">
             </embedded-view>
             <embedded-view class="dg-fill-parent" view-id="volleyball-ui-matches" dg-type="subview"
                 ng-show="currentViewId === 'matches'">
