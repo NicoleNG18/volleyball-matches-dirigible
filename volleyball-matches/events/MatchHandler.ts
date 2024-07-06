@@ -49,25 +49,42 @@ export const trigger = (event) => {
             hostTeamPoints[0].VNL += match.PointsHost;
             guestTeamPoints[0].VNL += match.PointsGuest;
 
+            console.log(hostTeamPoints[0].VNL);
+            console.log("guest" + guestTeamPoints[0].VNL);
+
+            TeamPointsDao.update(hostTeamPoints[0]);
+            TeamPointsDao.update(guestTeamPoints[0]);
+
+            console.log(hostTeamPoints[0].VNL);
+            console.log("guest" + guestTeamPoints[0].VNL);
+
         } else if (league.Name === "Olympic Games") {
 
             hostTeamPoints[0].OlympicGames += match.PointsHost;
             guestTeamPoints[0].OlympicGames += match.PointsGuest;
+
+            TeamPointsDao.update(hostTeamPoints[0]);
+            TeamPointsDao.update(guestTeamPoints[0]);
 
         } else if (league.Name === "European Championship") {
 
             hostTeamPoints[0].EuropeanChamp += match.PointsHost;
             guestTeamPoints[0].EuropeanChamp += match.PointsGuest;
 
+            TeamPointsDao.update(hostTeamPoints[0]);
+            TeamPointsDao.update(guestTeamPoints[0]);
+
         } else if (league.Name === "World Championship") {
 
             hostTeamPoints[0].WorldChamp += match.PointsHost;
             guestTeamPoints[0].WorldChamp += match.PointsGuest;
 
+            TeamPointsDao.update(hostTeamPoints[0]);
+            TeamPointsDao.update(guestTeamPoints[0]);
+
         }
 
-        TeamPointsDao.update(hostTeamPoints);
-        TeamPointsDao.update(guestTeamPoints);
+
 
     } else if (event.operation === "update") {
     } else if (event.operation === "delete") {
