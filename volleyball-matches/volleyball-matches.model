@@ -111,17 +111,6 @@
                         "relationshipEntityName": "League",
                         "relationshipEntityPerspectiveName": "League",
                         "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataDefaultValue": "0",
-                        "dataName": "TEAM_POINTS",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Points",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity Team",
