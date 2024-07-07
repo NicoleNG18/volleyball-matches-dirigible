@@ -17,7 +17,7 @@ export const trigger = (event) => {
     let hostTeamPoints = TeamPointsDao.findAll({
         $filter: {
             equals: {
-                Team: hostTeam.Id
+                Id: hostTeam.TeamPoints
             }
         }
     });
@@ -26,7 +26,7 @@ export const trigger = (event) => {
     let guestTeamPoints = TeamPointsDao.findAll({
         $filter: {
             equals: {
-                Team: guestTeam.Id
+                Id: guestTeam.TeamPoints
             }
         }
     });

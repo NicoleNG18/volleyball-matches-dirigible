@@ -2979,6 +2979,9 @@ components:
         League:
           type: integer
           format: int32
+        TeamPoints:
+          type: integer
+          format: int32
     TeamFilterOptions:
       type: object
       properties:
@@ -3008,6 +3011,14 @@ components:
                         minLength: 0
                         maxLength: 50
                 League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                TeamPoints:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3045,6 +3056,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                TeamPoints:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -3054,6 +3073,7 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                TeamPoints:
             greaterThan:
               type: object
               properties:
@@ -3065,6 +3085,9 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                  type: integer
+                  format: int32
+                TeamPoints:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -3080,6 +3103,9 @@ components:
                 League:
                   type: integer
                   format: int32
+                TeamPoints:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -3091,6 +3117,9 @@ components:
                   minLength: 0
                   maxLength: 50
                 League:
+                  type: integer
+                  format: int32
+                TeamPoints:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -3106,14 +3135,17 @@ components:
                 League:
                   type: integer
                   format: int32
+                TeamPoints:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "League"]
+          example: ["Id", "Name", "League", "TeamPoints"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,League"
+            example: "Id,Name,League,TeamPoints"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3907,9 +3939,6 @@ components:
         Id:
           type: integer
           format: int32
-        Team:
-          type: integer
-          format: int32
         VNL:
           type: integer
           format: int32
@@ -3936,14 +3965,6 @@ components:
               type: object
               properties:
                 Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Team:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4002,14 +4023,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Team:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 VNL:
                   oneOf:
                     - type: integer
@@ -4054,7 +4067,6 @@ components:
               type: object
               properties:
                 Id:
-                Team:
                 VNL:
                 OlympicGames:
                 EuropeanChamp:
@@ -4064,9 +4076,6 @@ components:
               type: object
               properties:
                 Id:
-                  type: integer
-                  format: int32
-                Team:
                   type: integer
                   format: int32
                 VNL:
@@ -4090,9 +4099,6 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Team:
-                  type: integer
-                  format: int32
                 VNL:
                   type: integer
                   format: int32
@@ -4112,9 +4118,6 @@ components:
               type: object
               properties:
                 Id:
-                  type: integer
-                  format: int32
-                Team:
                   type: integer
                   format: int32
                 VNL:
@@ -4138,9 +4141,6 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Team:
-                  type: integer
-                  format: int32
                 VNL:
                   type: integer
                   format: int32
@@ -4158,12 +4158,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Team", "VNL", "OlympicGames", "EuropeanChamp", "WorldChamp", "SumPoints"]
+          example: ["Id", "VNL", "OlympicGames", "EuropeanChamp", "WorldChamp", "SumPoints"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Team,VNL,OlympicGames,EuropeanChamp,WorldChamp,SumPoints"
+            example: "Id,VNL,OlympicGames,EuropeanChamp,WorldChamp,SumPoints"
         $order:
           type: string
           enum: ["asc", "desc"]

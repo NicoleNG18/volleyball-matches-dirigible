@@ -1,4 +1,5 @@
 import { TeamRepository as TeamDao } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamRepository";
+import { TeamPointsRepository as TeamPointsDao } from "volleyball-matches/gen/volleyball-matches/dao/entities/TeamPointsRepository";
 
 import { Controller, Get } from "sdk/http";
 import { query } from "sdk/db";
@@ -7,15 +8,17 @@ import { query } from "sdk/db";
 class TeamService {
 
     private readonly teamDao;
+    private readonly teamPointsDao;
 
     constructor() {
         this.teamDao = new TeamDao();
+        this.teamPointsDao = new TeamPointsDao();
     }
 
     @Get("/teamData")
     public teamData() {
 
-        let vnlTeams = this.teamDao.findAll({
+        let vnlTeams = this.teamPointsDao.findAll({
             $filter: {
                 equals: {
                     League: 1

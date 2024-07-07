@@ -39,9 +39,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Team !== undefined) {
-				filter.$filter.equals.Team = entity.Team;
-			}
 			if (entity.VNL !== undefined) {
 				filter.$filter.equals.VNL = entity.VNL;
 			}

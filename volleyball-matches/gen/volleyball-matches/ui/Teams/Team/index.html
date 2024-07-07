@@ -30,6 +30,7 @@
 					<tr fd-table-row>
 						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>League</th>
+						<th fd-table-header-cell>TeamPoints</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -43,6 +44,7 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsLeagueValue(next.League)}}
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.TeamPoints}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

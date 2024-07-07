@@ -45,6 +45,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "TEAM_LEAGUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TEAM_TEAMPOINTS"
                     }
                 ]
             },
@@ -177,11 +182,6 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "TEAMPOINTS_TEAM"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
                         "name": "TEAMPOINTS_VNL"
                     },
                     {
@@ -225,6 +225,15 @@
                 "referencedColumns": "LEAGUE_ID"
             },
             {
+                "name": "Team_TeamPoints",
+                "type": "foreignKey",
+                "table": "VOLLEYBALL_MATCHES_TEAM",
+                "constraintName": "Team_TeamPoints",
+                "columns": "TEAM_TEAMPOINTS",
+                "referencedTable": "VOLLEYBALL_MATCHES_TEAMPOINTS",
+                "referencedColumns": "TEAMPOINTS_ID"
+            },
+            {
                 "name": "Player_Team",
                 "type": "foreignKey",
                 "table": "VOLLEYBALL_MATCHES_PLAYER",
@@ -266,15 +275,6 @@
                 "table": "VOLLEYBALL_MATCHES_COACH",
                 "constraintName": "Coach_Team",
                 "columns": "COACH_TEAM",
-                "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
-                "referencedColumns": "TEAM_ID"
-            },
-            {
-                "name": "TeamPoints_Team",
-                "type": "foreignKey",
-                "table": "VOLLEYBALL_MATCHES_TEAMPOINTS",
-                "constraintName": "TeamPoints_Team",
-                "columns": "TEAMPOINTS_TEAM",
                 "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
             }

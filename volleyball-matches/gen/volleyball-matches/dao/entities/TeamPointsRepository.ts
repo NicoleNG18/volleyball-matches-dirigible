@@ -5,7 +5,6 @@ import { dao as daoApi } from "sdk/db";
 
 export interface TeamPointsEntity {
     readonly Id: number;
-    Team?: number;
     VNL?: number;
     OlympicGames?: number;
     EuropeanChamp?: number;
@@ -14,7 +13,6 @@ export interface TeamPointsEntity {
 }
 
 export interface TeamPointsCreateEntity {
-    readonly Team?: number;
     readonly VNL?: number;
     readonly OlympicGames?: number;
     readonly EuropeanChamp?: number;
@@ -29,7 +27,6 @@ export interface TeamPointsEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Team?: number | number[];
             VNL?: number | number[];
             OlympicGames?: number | number[];
             EuropeanChamp?: number | number[];
@@ -38,7 +35,6 @@ export interface TeamPointsEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Team?: number | number[];
             VNL?: number | number[];
             OlympicGames?: number | number[];
             EuropeanChamp?: number | number[];
@@ -47,7 +43,6 @@ export interface TeamPointsEntityOptions {
         };
         contains?: {
             Id?: number;
-            Team?: number;
             VNL?: number;
             OlympicGames?: number;
             EuropeanChamp?: number;
@@ -56,7 +51,6 @@ export interface TeamPointsEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Team?: number;
             VNL?: number;
             OlympicGames?: number;
             EuropeanChamp?: number;
@@ -65,7 +59,6 @@ export interface TeamPointsEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Team?: number;
             VNL?: number;
             OlympicGames?: number;
             EuropeanChamp?: number;
@@ -74,7 +67,6 @@ export interface TeamPointsEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Team?: number;
             VNL?: number;
             OlympicGames?: number;
             EuropeanChamp?: number;
@@ -83,7 +75,6 @@ export interface TeamPointsEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Team?: number;
             VNL?: number;
             OlympicGames?: number;
             EuropeanChamp?: number;
@@ -124,11 +115,6 @@ export class TeamPointsRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
-            },
-            {
-                name: "Team",
-                column: "TEAMPOINTS_TEAM",
-                type: "INTEGER",
             },
             {
                 name: "VNL",

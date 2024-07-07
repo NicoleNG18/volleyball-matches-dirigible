@@ -111,6 +111,22 @@
                         "relationshipEntityName": "League",
                         "relationshipEntityPerspectiveName": "League",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "TEAM_TEAMPOINTS",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "TeamPoints",
+                        "relationshipCardinality": "1_1",
+                        "relationshipName": "Team_TeamPoints",
+                        "relationshipType": "COMPOSITION",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "TeamPoints",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Team",
@@ -466,22 +482,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "TEAMPOINTS_TEAM",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Team",
-                        "relationshipCardinality": "1_1",
-                        "relationshipName": "TeamPoints_Team",
-                        "relationshipType": "COMPOSITION",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipEntityName": "Team",
-                        "relationshipEntityPerspectiveName": "Teams",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "TEAMPOINTS_VNL",

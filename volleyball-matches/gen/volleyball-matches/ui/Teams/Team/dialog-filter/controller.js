@@ -46,6 +46,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.League !== undefined) {
 				filter.$filter.equals.League = entity.League;
 			}
+			if (entity.TeamPoints !== undefined) {
+				filter.$filter.equals.TeamPoints = entity.TeamPoints;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

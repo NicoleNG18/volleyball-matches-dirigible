@@ -7,11 +7,13 @@ export interface TeamEntity {
     readonly Id: number;
     Name?: string;
     League?: number;
+    TeamPoints?: number;
 }
 
 export interface TeamCreateEntity {
     readonly Name?: string;
     readonly League?: number;
+    readonly TeamPoints?: number;
 }
 
 export interface TeamUpdateEntity extends TeamCreateEntity {
@@ -24,36 +26,43 @@ export interface TeamEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
+            TeamPoints?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
+            TeamPoints?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             League?: number;
+            TeamPoints?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             League?: number;
+            TeamPoints?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
+            TeamPoints?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             League?: number;
+            TeamPoints?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
+            TeamPoints?: number;
         };
     },
     $select?: (keyof TeamEntity)[],
@@ -98,6 +107,11 @@ export class TeamRepository {
             {
                 name: "League",
                 column: "TEAM_LEAGUE",
+                type: "INTEGER",
+            },
+            {
+                name: "TeamPoints",
+                column: "TEAM_TEAMPOINTS",
                 type: "INTEGER",
             }
         ]
