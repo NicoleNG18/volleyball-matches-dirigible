@@ -18,7 +18,7 @@ class TeamService {
     @Get("/teamData")
     public teamData() {
 
-        let vnlTeams = this.teamPointsDao.findAll({
+        let vnlTeams = this.teamDao.findAll({
             $filter: {
                 equals: {
                     League: 1
@@ -50,7 +50,7 @@ class TeamService {
             }
         });
 
-        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, tp.TEAMPOINTS_SUMPOINTS as SUMPOINTS FROM VOLLEYBALL_MATCHES_TEAM t JOIN VOLLEYBALL_MATCHES_TEAMPOINTS tp ON t.TEAM_ID=tp.TEAMPOINTS_TEAM ORDER BY tp.TEAMPOINTS_SUMPOINTS DESC LIMIT 5";
+        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, tp.TEAMPOINTS_SUMPOINTS as SUMPOINTS FROM VOLLEYBALL_MATCHES_TEAM t JOIN VOLLEYBALL_MATCHES_TEAMPOINTS tp ON t.TEAM_TEAMPOINTS=tp.TEAMPOINTS_ID ORDER BY tp.TEAMPOINTS_SUMPOINTS DESC LIMIT 5";
         let resultset = query.execute(sqlUnits);
 
         const topFiveTeams = resultset.map(row => ({
