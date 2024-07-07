@@ -47,14 +47,16 @@ class TeamService {
             }
         });
 
-        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, t.TEAM_POINTS AS POINTS FROM VOLLEYBALL_MATCHES_TEAM t ORDER BY POINTS DESC LIMIT 5";
+        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, tp.TEAMPOINTS_SUMPOINTS as SUMPOINTS FROM VOLLEYBALL_MATCHES_TEAM t JOIN VOLLEYBALL_MATCHES_TEAMPOINTS tp ON t.TEAM_ID=tp.TEAMPOINTS_TEAM ORDER BY tp.TEAMPOINTS_SUMPOINTS DESC LIMIT 5";
         let resultset = query.execute(sqlUnits);
 
         const topFiveTeams = resultset.map(row => ({
             Name: row.NAME,
             League: row.LEAGUE,
-            Points: row.POINTS
+            Points: row.SUMPOINTS
         }));
+
+        console.log(topFiveTeams);
 
         return {
             "VnlTeams": vnlTeams,
