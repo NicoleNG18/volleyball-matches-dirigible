@@ -956,8 +956,8 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "VNL+OLYMPICGAMES+EUROPEANCHAMP+WORLDCHAMP",
-          "calculatedPropertyExpressionUpdate": "VNL+OLYMPICGAMES+EUROPEANCHAMP+WORLDCHAMP",
+          "calculatedPropertyExpressionCreate": "entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp']",
+          "calculatedPropertyExpressionUpdate": "entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp']",
           "dataName": "TEAMPOINTS_SUMPOINTS",
           "dataNullable": true,
           "dataType": "INTEGER",

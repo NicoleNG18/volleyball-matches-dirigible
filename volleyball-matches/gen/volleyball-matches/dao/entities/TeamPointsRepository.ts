@@ -175,7 +175,7 @@ export class TeamPointsRepository {
 
     public create(entity: TeamPointsCreateEntity): number {
         // @ts-ignore
-        (entity as TeamPointsEntity).SumPoints = VNL+OLYMPICGAMES+EUROPEANCHAMP+WORLDCHAMP;
+        (entity as TeamPointsEntity).SumPoints = entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp'];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -192,7 +192,7 @@ export class TeamPointsRepository {
 
     public update(entity: TeamPointsUpdateEntity): void {
         // @ts-ignore
-        (entity as TeamPointsEntity).SumPoints = VNL+OLYMPICGAMES+EUROPEANCHAMP+WORLDCHAMP;
+        (entity as TeamPointsEntity).SumPoints = entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp'];
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
