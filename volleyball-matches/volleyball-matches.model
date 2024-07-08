@@ -113,20 +113,61 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "TEAM_TEAMPOINTS",
-                        "dataNullable": "true",
+                        "dataDefaultValue": "0",
+                        "dataName": "TEAM_VNLPOINTS",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
-                        "name": "TeamPoints",
-                        "relationshipCardinality": "1_1",
-                        "relationshipName": "Team_TeamPoints",
-                        "relationshipType": "COMPOSITION",
+                        "name": "VNLpoints",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipEntityName": "TeamPoints",
-                        "relationshipEntityPerspectiveName": "entities",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataDefaultValue": "0",
+                        "dataName": "TEAM_EUROPEANCHAMPPOINTS",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "name": "EuropeanChampPoints",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataDefaultValue": "0",
+                        "dataName": "TEAM_OLYMPICGAMESPOINTS",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "name": "OlympicGamesPoints",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataDefaultValue": "0",
+                        "dataName": "TEAM_WORLDCHAMPPOINTS",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "name": "WorldChampPoints",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
+                        "calculatedPropertyExpressionUpdate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
+                        "dataName": "TEAM_SUMPOINTS",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "isCalculatedProperty": "true",
+                        "name": "SumPoints",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity Team",
@@ -467,95 +508,6 @@
                 "perspectiveRole": "",
                 "title": "Season",
                 "tooltip": "Season",
-                "type": "PRIMARY"
-            },
-            {
-                "properties": [
-                    {
-                        "dataAutoIncrement": "true",
-                        "dataName": "TEAMPOINTS_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "name": "Id",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "TEAMPOINTS_VNL",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "VNL",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "TEAMPOINTS_OLYMPICGAMES",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "OlympicGames",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "TEAMPOINTS_EUROPEANCHAMP",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "EuropeanChamp",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "TEAMPOINTS_WORLDCHAMP",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "WorldChamp",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp']",
-                        "calculatedPropertyExpressionUpdate": "entity['VNL']+entity['OlympicGames']+entity['EuropeanChamp']+entity['WorldChamp']",
-                        "dataName": "TEAMPOINTS_SUMPOINTS",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "isCalculatedProperty": "true",
-                        "name": "SumPoints",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    }
-                ],
-                "caption": "Manage entity TeamPoints",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}TEAMPOINTS\"",
-                "dataName": "TEAMPOINTS",
-                "dataQuery": "",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
-                "menuIndex": "100",
-                "menuKey": "teampoints",
-                "menuLabel": "TeamPoints",
-                "name": "TeamPoints",
-                "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
-                "perspectiveRole": "",
-                "title": "TeamPoints",
-                "tooltip": "TeamPoints",
                 "type": "PRIMARY"
             }
         ],

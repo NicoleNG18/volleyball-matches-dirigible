@@ -7,13 +7,20 @@ export interface TeamEntity {
     readonly Id: number;
     Name?: string;
     League?: number;
-    TeamPoints?: number;
+    VNLpoints: number;
+    EuropeanChampPoints: number;
+    OlympicGamesPoints: number;
+    WorldChampPoints: number;
+    SumPoints: number;
 }
 
 export interface TeamCreateEntity {
     readonly Name?: string;
     readonly League?: number;
-    readonly TeamPoints?: number;
+    readonly VNLpoints: number;
+    readonly EuropeanChampPoints: number;
+    readonly OlympicGamesPoints: number;
+    readonly WorldChampPoints: number;
 }
 
 export interface TeamUpdateEntity extends TeamCreateEntity {
@@ -26,43 +33,71 @@ export interface TeamEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
-            TeamPoints?: number | number[];
+            VNLpoints?: number | number[];
+            EuropeanChampPoints?: number | number[];
+            OlympicGamesPoints?: number | number[];
+            WorldChampPoints?: number | number[];
+            SumPoints?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             League?: number | number[];
-            TeamPoints?: number | number[];
+            VNLpoints?: number | number[];
+            EuropeanChampPoints?: number | number[];
+            OlympicGamesPoints?: number | number[];
+            WorldChampPoints?: number | number[];
+            SumPoints?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             League?: number;
-            TeamPoints?: number;
+            VNLpoints?: number;
+            EuropeanChampPoints?: number;
+            OlympicGamesPoints?: number;
+            WorldChampPoints?: number;
+            SumPoints?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             League?: number;
-            TeamPoints?: number;
+            VNLpoints?: number;
+            EuropeanChampPoints?: number;
+            OlympicGamesPoints?: number;
+            WorldChampPoints?: number;
+            SumPoints?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
-            TeamPoints?: number;
+            VNLpoints?: number;
+            EuropeanChampPoints?: number;
+            OlympicGamesPoints?: number;
+            WorldChampPoints?: number;
+            SumPoints?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             League?: number;
-            TeamPoints?: number;
+            VNLpoints?: number;
+            EuropeanChampPoints?: number;
+            OlympicGamesPoints?: number;
+            WorldChampPoints?: number;
+            SumPoints?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             League?: number;
-            TeamPoints?: number;
+            VNLpoints?: number;
+            EuropeanChampPoints?: number;
+            OlympicGamesPoints?: number;
+            WorldChampPoints?: number;
+            SumPoints?: number;
         };
     },
     $select?: (keyof TeamEntity)[],
@@ -110,9 +145,34 @@ export class TeamRepository {
                 type: "INTEGER",
             },
             {
-                name: "TeamPoints",
-                column: "TEAM_TEAMPOINTS",
+                name: "VNLpoints",
+                column: "TEAM_VNLPOINTS",
                 type: "INTEGER",
+                required: true
+            },
+            {
+                name: "EuropeanChampPoints",
+                column: "TEAM_EUROPEANCHAMPPOINTS",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "OlympicGamesPoints",
+                column: "TEAM_OLYMPICGAMESPOINTS",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "WorldChampPoints",
+                column: "TEAM_WORLDCHAMPPOINTS",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "SumPoints",
+                column: "TEAM_SUMPOINTS",
+                type: "INTEGER",
+                required: true
             }
         ]
     };
@@ -133,6 +193,20 @@ export class TeamRepository {
     }
 
     public create(entity: TeamCreateEntity): number {
+        // @ts-ignore
+        (entity as TeamEntity).SumPoints = entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints'];
+        if (entity.VNLpoints === undefined || entity.VNLpoints === null) {
+            (entity as TeamEntity).VNLpoints = 0;
+        }
+        if (entity.EuropeanChampPoints === undefined || entity.EuropeanChampPoints === null) {
+            (entity as TeamEntity).EuropeanChampPoints = 0;
+        }
+        if (entity.OlympicGamesPoints === undefined || entity.OlympicGamesPoints === null) {
+            (entity as TeamEntity).OlympicGamesPoints = 0;
+        }
+        if (entity.WorldChampPoints === undefined || entity.WorldChampPoints === null) {
+            (entity as TeamEntity).WorldChampPoints = 0;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -148,6 +222,8 @@ export class TeamRepository {
     }
 
     public update(entity: TeamUpdateEntity): void {
+        // @ts-ignore
+        (entity as TeamEntity).SumPoints = entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints'];
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

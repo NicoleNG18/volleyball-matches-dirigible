@@ -46,8 +46,20 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.League !== undefined) {
 				filter.$filter.equals.League = entity.League;
 			}
-			if (entity.TeamPoints !== undefined) {
-				filter.$filter.equals.TeamPoints = entity.TeamPoints;
+			if (entity.VNLpoints !== undefined) {
+				filter.$filter.equals.VNLpoints = entity.VNLpoints;
+			}
+			if (entity.EuropeanChampPoints !== undefined) {
+				filter.$filter.equals.EuropeanChampPoints = entity.EuropeanChampPoints;
+			}
+			if (entity.OlympicGamesPoints !== undefined) {
+				filter.$filter.equals.OlympicGamesPoints = entity.OlympicGamesPoints;
+			}
+			if (entity.WorldChampPoints !== undefined) {
+				filter.$filter.equals.WorldChampPoints = entity.WorldChampPoints;
+			}
+			if (entity.SumPoints !== undefined) {
+				filter.$filter.equals.SumPoints = entity.SumPoints;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
