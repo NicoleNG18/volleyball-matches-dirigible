@@ -1,8 +1,5 @@
 TEAM_ID,TEAM_NAME,TEAM_LEAGUE
-1,Bulgaria,1
-1,Bulgaria,2
-1,Bulgaria,3
-1,Bulgaria,4
+1,Bulgaria,[1,2,3,4]
 2,Poland,2
 3,Slovenia,3
 4,France,4

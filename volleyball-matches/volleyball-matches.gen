@@ -235,14 +235,16 @@
           "feedPropertyName": "",
           "isRequiredProperty": true,
           "name": "League",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "Team_League",
+          "relationshipType": "COMPOSITION",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLabel": "League",
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "Team_League",
           "relationshipEntityName": "League",
           "relationshipEntityPerspectiveName": "League",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -394,6 +396,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
+      "masterEntity": "League",
+      "masterEntityId": "League",
       "hasDropdowns": true
     },
     {

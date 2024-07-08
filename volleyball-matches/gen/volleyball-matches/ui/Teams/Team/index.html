@@ -29,7 +29,6 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>Name</th>
-						<th fd-table-header-cell>League</th>
 						<th fd-table-header-cell>VNLpoints</th>
 						<th fd-table-header-cell>EuropeanChampPoints</th>
 						<th fd-table-header-cell>OlympicGamesPoints</th>
@@ -45,9 +44,6 @@
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsLeagueValue(next.League)}}
-						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.VNLpoints}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.EuropeanChampPoints}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.OlympicGamesPoints}}</td>
