@@ -4,6 +4,13 @@
     font-weight: bold;
 }
 
+.header-players {
+    display: flex;
+    flex-direction: row;
+    gap: 4em;
+    padding: 1em 8em 1em 0em;
+}
+
 table {
     border: 1px solid black;
 }

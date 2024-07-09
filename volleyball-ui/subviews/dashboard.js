@@ -71,25 +71,54 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
 
     angular.element($document[0]).ready(async function () {
         const teamData = await getTeamData();
-        const playerData = await getPlayerData();
         $scope.$apply(function () {
             $scope.vnlTeams = teamData.VnlTeams;
             $scope.olympicTeams = teamData.OlympicTeams;
             $scope.europeanChampTeams = teamData.EuropeanChampTeams;
             $scope.worldChampTeams = teamData.WorldChampTeams;
             $scope.topFiveTeams = teamData.TopFiveTeams;
-            $scope.serbian = playerData.Serbian;
-            $scope.french = playerData.French;
-            $scope.brazilian = playerData.Brazilian;
-            $scope.bulgarian = playerData.Bulgarian;
-            $scope.slovenian = playerData.Slovenian;
-            $scope.cuban = playerData.Cuban;
-            $scope.canadian = playerData.Canadian;
-            $scope.turkish = playerData.Turkish;
-            $scope.american = playerData.American;
-            $scope.polish = playerData.Polish;
-            $scope.chineese = playerData.Chineese;
-            $scope.dutch = playerData.Dutch;
-        });
+        })
     });
+
+
+
+    $scope.displayByName = function () {
+        angular.element($document[0]).ready(async function () {
+            const playerData = await getPlayerData();
+            $scope.$apply(function () {
+                $scope.serbian = playerData.Serbian;
+                $scope.french = playerData.French;
+                $scope.brazilian = playerData.Brazilian;
+                $scope.bulgarian = playerData.Bulgarian;
+                $scope.slovenian = playerData.Slovenian;
+                $scope.cuban = playerData.Cuban;
+                $scope.canadian = playerData.Canadian;
+                $scope.turkish = playerData.Turkish;
+                $scope.american = playerData.American;
+                $scope.polish = playerData.Polish;
+                $scope.chineese = playerData.Chineese;
+                $scope.dutch = playerData.Dutch;
+            });
+        });
+    };
+
+    $scope.displayByAge = function () {
+        angular.element($document[0]).ready(async function () {
+            const playerData = await getPlayerData();
+            $scope.$apply(function () {
+                $scope.serbian = playerData.Serbian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.french = playerData.French.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.brazilian = playerData.Brazilian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.bulgarian = playerData.Bulgarian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.slovenian = playerData.Slovenian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.cuban = playerData.Cuban.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.canadian = playerData.Canadian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.turkish = playerData.Turkish.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.american = playerData.American.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.polish = playerData.Polish.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.chineese = playerData.Chineese.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+                $scope.dutch = playerData.Dutch.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
+            });
+        });
+    };
 }]);
