@@ -5,7 +5,8 @@ The application allows you to keep track of the results of your favorite teams a
 Model:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-![image](https://github.com/NicoleNG18/volleyball-matches-dirigible/assets/105500638/8e6a92e5-c8a6-4952-a2ee-aefdbbec4ef2)
+![image](https://github.com/NicoleNG18/volleyball-matches-dirigible/assets/105500638/1c8e27c8-93b4-4aca-aa0f-143f311c239e)
+
 
 
 Build:
