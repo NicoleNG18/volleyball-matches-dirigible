@@ -20,7 +20,8 @@ class PlayerService {
                     Team: 1
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
+
 
         let polish = this.playerDao.findAll({
             $filter: {
@@ -28,7 +29,7 @@ class PlayerService {
                     Team: 2
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let slovenian = this.playerDao.findAll({
             $filter: {
@@ -36,7 +37,7 @@ class PlayerService {
                     Team: 3
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let french = this.playerDao.findAll({
             $filter: {
@@ -44,7 +45,7 @@ class PlayerService {
                     Team: 4
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let brazilian = this.playerDao.findAll({
             $filter: {
@@ -52,7 +53,7 @@ class PlayerService {
                     Team: 5
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let dutch = this.playerDao.findAll({
             $filter: {
@@ -60,7 +61,7 @@ class PlayerService {
                     Team: 6
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let canadian = this.playerDao.findAll({
             $filter: {
@@ -68,7 +69,7 @@ class PlayerService {
                     Team: 7
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let cuban = this.playerDao.findAll({
             $filter: {
@@ -76,7 +77,7 @@ class PlayerService {
                     Team: 8
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let american = this.playerDao.findAll({
             $filter: {
@@ -84,7 +85,7 @@ class PlayerService {
                     Team: 9
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let chineese = this.playerDao.findAll({
             $filter: {
@@ -92,7 +93,7 @@ class PlayerService {
                     Team: 10
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let turkish = this.playerDao.findAll({
             $filter: {
@@ -100,7 +101,7 @@ class PlayerService {
                     Team: 11
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         let serbian = this.playerDao.findAll({
             $filter: {
@@ -108,7 +109,7 @@ class PlayerService {
                     Team: 12
                 }
             }
-        });
+        }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
 
         return {
             "Serbian": serbian,

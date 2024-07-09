@@ -21,7 +21,7 @@ class TeamService {
                     League: 1
                 }
             }
-        });
+        }).sort((a, b) => a.VNLpoints > b.VNLpoints ? -1 : a.VNLpoints < b.VNLpoints ? 1 : 0);
 
         let olympicTeams = this.teamDao.findAll({
             $filter: {
@@ -29,7 +29,7 @@ class TeamService {
                     League: 2
                 }
             }
-        });
+        }).sort((a, b) => a.VNLpoints > b.VNLpoints ? -1 : a.VNLpoints < b.VNLpoints ? 1 : 0);
 
         let europeanChampTeams = this.teamDao.findAll({
             $filter: {
@@ -37,7 +37,7 @@ class TeamService {
                     League: 3
                 }
             }
-        });
+        }).sort((a, b) => a.VNLpoints > b.VNLpoints ? -1 : a.VNLpoints < b.VNLpoints ? 1 : 0);
 
         let worldChampTeams = this.teamDao.findAll({
             $filter: {
@@ -45,7 +45,7 @@ class TeamService {
                     League: 4
                 }
             }
-        });
+        }).sort((a, b) => a.VNLpoints > b.VNLpoints ? -1 : a.VNLpoints < b.VNLpoints ? 1 : 0);
 
         const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_LEAGUE AS LEAGUE, t.TEAM_SUMPOINTS as SUMPOINTS FROM VOLLEYBALL_MATCHES_TEAM t ORDER BY t.TEAM_SUMPOINTS DESC LIMIT 5";
         let resultset = query.execute(sqlUnits);
@@ -55,8 +55,6 @@ class TeamService {
             League: row.LEAGUE,
             Points: row.SUMPOINTS
         }));
-
-        console.log(topFiveTeams);
 
         return {
             "VnlTeams": vnlTeams,
