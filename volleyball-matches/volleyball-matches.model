@@ -96,6 +96,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
                         "calculatedPropertyExpressionUpdate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
+                        "dataDefaultValue": "0",
                         "dataName": "TEAM_SUMPOINTS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -490,6 +491,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataDefaultValue": "0",
                         "dataName": "TEAMLEAGUE_POINTS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
