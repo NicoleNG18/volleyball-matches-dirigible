@@ -78,15 +78,13 @@
                                     <th class="table-cell" scope="col">Name</th>
                                     <th class="table-cell" scope="col">League</th>
                                     <th class="table-cell" scope="col">League points</th>
-                                    <th class="table-cell" scope="col">All points</th>
                                 </tr>
                             </thead>
                             <tbody class="fd-table__body" id="top_products">
                                 <tr ng-repeat="next in vnlTeams">
-                                    <td class="table-cell-body">{{next.Name}}</td>
+                                    <td class="table-cell-body">{{optionsTeamValue(next.Team)}}</td>
                                     <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
-                                    <td class="table-cell-body">{{next.VNLpoints}}</td>
-                                    <td class="table-cell-body">{{next.SumPoints}}</td>
+                                    <td class="table-cell-body">{{next.Points}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -96,15 +94,14 @@
                                     <th class="table-cell" scope="col">Name</th>
                                     <th class="table-cell" scope="col">League</th>
                                     <th class="table-cell" scope="col">League points</th>
-                                    <th class="table-cell" scope="col">All points</th>
+
                                 </tr>
                             </thead>
                             <tbody class="fd-table__body" id="top_products">
                                 <tr ng-repeat="next in olympicTeams">
-                                    <td class="table-cell-body">{{next.Name}}</td>
+                                    <td class="table-cell-body">{{optionsTeamValue(next.Team)}}</td>
                                     <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
-                                    <td class="table-cell-body">{{next.OlympicGamesPoints}}</td>
-                                    <td class="table-cell-body">{{next.SumPoints}}</td>
+                                    <td class="table-cell-body">{{next.Points}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -114,15 +111,13 @@
                                     <th class="table-cell" scope="col">Name</th>
                                     <th class="table-cell" scope="col">League</th>
                                     <th class="table-cell" scope="col">League points</th>
-                                    <th class="table-cell" scope="col">All points</th>
                                 </tr>
                             </thead>
                             <tbody class="fd-table__body" id="top_products">
                                 <tr ng-repeat="next in europeanChampTeams">
-                                    <td class="table-cell-body">{{next.Name}}</td>
+                                    <td class="table-cell-body">{{optionsTeamValue(next.Team)}}</td>
                                     <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
-                                    <td class="table-cell-body">{{next.EuropeanChampPoints}}</td>
-                                    <td class="table-cell-body">{{next.SumPoints}}</td>
+                                    <td class="table-cell-body">{{next.Points}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -132,15 +127,13 @@
                                     <th class="table-cell" scope="col">Name</th>
                                     <th class="table-cell" scope="col">League</th>
                                     <th class="table-cell" scope="col">League points</th>
-                                    <th class="table-cell" scope="col">All points</th>
                                 </tr>
                             </thead>
                             <tbody class="fd-table__body" id="top_products">
                                 <tr ng-repeat="next in worldChampTeams">
-                                    <td class="table-cell-body">{{next.Name}}</td>
+                                    <td class="table-cell-body">{{optionsTeamValue(next.Team)}}</td>
                                     <td class="table-cell-body">{{optionsLeagueValue(next.League)}}</td>
-                                    <td class="table-cell-body">{{next.WorldChampPoints}}</td>
-                                    <td class="table-cell-body">{{next.SumPoints}}</td>
+                                    <td class="table-cell-body">{{next.Points}}</td>
                                 </tr>
                             </tbody>
                         </table>
