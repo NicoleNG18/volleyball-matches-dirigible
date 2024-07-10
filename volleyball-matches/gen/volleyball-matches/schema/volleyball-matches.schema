@@ -43,6 +43,7 @@
                     },
                     {
                         "type": "INTEGER",
+                        "defaultValue": "0",
                         "name": "TEAM_SUMPOINTS"
                     }
                 ]
@@ -185,6 +186,7 @@
                     },
                     {
                         "type": "INTEGER",
+                        "defaultValue": "0",
                         "nullable": true,
                         "name": "TEAMLEAGUE_POINTS"
                     }

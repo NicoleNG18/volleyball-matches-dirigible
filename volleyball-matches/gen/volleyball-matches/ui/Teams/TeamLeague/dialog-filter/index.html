@@ -32,18 +32,13 @@
                         	<fd-form-label for="idTeam" dg-colon="true">Team</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Team'].$valid }}">
-	                            <fd-input id="idTeam"
-	                                name="Team"
-	                                state="{{ forms.details['Team'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Team"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Team">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <fd-combobox-input id="idTeam"
+	                            name="Team"
+	                            state="{{ forms.details['Team'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Team"
+	                            dropdown-items="optionsTeam"
+	                            dg-placeholder="Search Team ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -51,18 +46,13 @@
                         	<fd-form-label for="idLeague" dg-colon="true">League</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['League'].$valid }}">
-	                            <fd-input id="idLeague"
-	                                name="League"
-	                                state="{{ forms.details['League'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.League"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter League">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <fd-combobox-input id="idLeague"
+	                            name="League"
+	                            state="{{ forms.details['League'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.League"
+	                            dropdown-items="optionsLeague"
+	                            dg-placeholder="Search League ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">

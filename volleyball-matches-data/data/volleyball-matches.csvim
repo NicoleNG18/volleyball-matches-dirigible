@@ -58,7 +58,7 @@
     {
       "table": "VOLLEYBALL_MATCHES_TEAMLEAGUE",
       "schema": "PUBLIC",
-      "file": "/volleyball-matches/data/csv/teamLeague.csv",
+      "file": "/volleyball-matches-data/data/csv/teamLeague.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",

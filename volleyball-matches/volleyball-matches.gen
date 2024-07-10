@@ -232,6 +232,7 @@
         {
           "calculatedPropertyExpressionCreate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
           "calculatedPropertyExpressionUpdate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
+          "dataDefaultValue": "0",
           "dataName": "TEAM_SUMPOINTS",
           "dataNullable": false,
           "dataType": "INTEGER",
@@ -812,10 +813,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "Team",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "TeamLeague_Team",
           "relationshipEntityName": "Team",
           "relationshipEntityPerspectiveName": "Teams",
@@ -827,7 +830,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Team",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -837,10 +840,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "League",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "TeamLeague_League",
           "relationshipEntityName": "League",
           "relationshipEntityPerspectiveName": "League",
@@ -852,12 +857,13 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "League",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
         },
         {
+          "dataDefaultValue": "0",
           "dataName": "TEAMLEAGUE_POINTS",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -904,7 +910,8 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "hasDropdowns": true
     }
   ]
 }

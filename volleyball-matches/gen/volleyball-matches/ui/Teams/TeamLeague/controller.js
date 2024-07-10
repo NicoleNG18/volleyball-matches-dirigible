@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -107,12 +107,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "select",
 				entity: entity,
+				optionsTeam: $scope.optionsTeam,
+				optionsLeague: $scope.optionsLeague,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("TeamLeague-filter", {
 				entity: $scope.filterEntity,
+				optionsTeam: $scope.optionsTeam,
+				optionsLeague: $scope.optionsLeague,
 			});
 		};
 
@@ -121,6 +125,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "create",
 				entity: {},
+				optionsTeam: $scope.optionsTeam,
+				optionsLeague: $scope.optionsLeague,
 			}, null, false);
 		};
 
@@ -128,6 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "update",
 				entity: entity,
+				optionsTeam: $scope.optionsTeam,
+				optionsLeague: $scope.optionsLeague,
 			}, null, false);
 		};
 
@@ -159,5 +167,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsTeam = [];
+		$scope.optionsLeague = [];
+
+
+		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
+			$scope.optionsTeam = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts").then(function (response) {
+			$scope.optionsLeague = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsTeamValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsTeam.length; i++) {
+				if ($scope.optionsTeam[i].value === optionKey) {
+					return $scope.optionsTeam[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsLeagueValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsLeague.length; i++) {
+				if ($scope.optionsLeague[i].value === optionKey) {
+					return $scope.optionsLeague[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

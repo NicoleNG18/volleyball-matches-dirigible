@@ -121,6 +121,9 @@ export class TeamRepository {
     public create(entity: TeamCreateEntity): number {
         // @ts-ignore
         (entity as TeamEntity).SumPoints = entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints'];
+        if (entity.SumPoints === undefined || entity.SumPoints === null) {
+            (entity as TeamEntity).SumPoints = 0;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
