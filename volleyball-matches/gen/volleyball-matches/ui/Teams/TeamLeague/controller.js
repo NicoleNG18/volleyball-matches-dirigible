@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'volleyball-matches.Teams.Team';
+		messageHubProvider.eventIdPrefix = 'volleyball-matches.Teams.TeamLeague';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts";
+		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'volleyball-matches-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Teams" && e.view === "Team" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Teams" && e.view === "Team" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Teams" && e.view === "TeamLeague" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Teams" && e.view === "TeamLeague" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Team", `Unable to count Team: '${response.message}'`);
+					messageHub.showAlertError("TeamLeague", `Unable to count TeamLeague: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,7 +89,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Team", `Unable to list/filter Team: '${response.message}'`);
+						messageHub.showAlertError("TeamLeague", `Unable to list/filter TeamLeague: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -104,28 +104,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Team-details", {
+			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "select",
 				entity: entity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Team-filter", {
+			messageHub.showDialogWindow("TeamLeague-filter", {
 				entity: $scope.filterEntity,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Team-details", {
+			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Team-details", {
+			messageHub.showDialogWindow("TeamLeague-details", {
 				action: "update",
 				entity: entity,
 			}, null, false);
@@ -134,8 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Team?',
-				`Are you sure you want to delete Team? This action cannot be undone.`,
+				'Delete TeamLeague?',
+				`Are you sure you want to delete TeamLeague? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Team", `Unable to delete Team: '${response.message}'`);
+							messageHub.showAlertError("TeamLeague", `Unable to delete TeamLeague: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

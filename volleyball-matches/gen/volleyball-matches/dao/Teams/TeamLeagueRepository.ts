@@ -3,69 +3,79 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface TeamEntity {
+export interface TeamLeagueEntity {
     readonly Id: number;
-    Name?: string;
-    SumPoints: number;
+    Team?: number;
+    League?: number;
+    Points?: number;
 }
 
-export interface TeamCreateEntity {
-    readonly Name?: string;
+export interface TeamLeagueCreateEntity {
+    readonly Team?: number;
+    readonly League?: number;
+    readonly Points?: number;
 }
 
-export interface TeamUpdateEntity extends TeamCreateEntity {
+export interface TeamLeagueUpdateEntity extends TeamLeagueCreateEntity {
     readonly Id: number;
 }
 
-export interface TeamEntityOptions {
+export interface TeamLeagueEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            SumPoints?: number | number[];
+            Team?: number | number[];
+            League?: number | number[];
+            Points?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            SumPoints?: number | number[];
+            Team?: number | number[];
+            League?: number | number[];
+            Points?: number | number[];
         };
         contains?: {
             Id?: number;
-            Name?: string;
-            SumPoints?: number;
+            Team?: number;
+            League?: number;
+            Points?: number;
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
-            SumPoints?: number;
+            Team?: number;
+            League?: number;
+            Points?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            SumPoints?: number;
+            Team?: number;
+            League?: number;
+            Points?: number;
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
-            SumPoints?: number;
+            Team?: number;
+            League?: number;
+            Points?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            SumPoints?: number;
+            Team?: number;
+            League?: number;
+            Points?: number;
         };
     },
-    $select?: (keyof TeamEntity)[],
-    $sort?: string | (keyof TeamEntity)[],
+    $select?: (keyof TeamLeagueEntity)[],
+    $sort?: string | (keyof TeamLeagueEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface TeamEntityEvent {
+interface TeamLeagueEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<TeamEntity>;
+    readonly entity: Partial<TeamLeagueEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -73,32 +83,36 @@ interface TeamEntityEvent {
     }
 }
 
-interface TeamUpdateEntityEvent extends TeamEntityEvent {
-    readonly previousEntity: TeamEntity;
+interface TeamLeagueUpdateEntityEvent extends TeamLeagueEntityEvent {
+    readonly previousEntity: TeamLeagueEntity;
 }
 
-export class TeamRepository {
+export class TeamLeagueRepository {
 
     private static readonly DEFINITION = {
-        table: "VOLLEYBALL_MATCHES_TEAM",
+        table: "VOLLEYBALL_MATCHES_TEAMLEAGUE",
         properties: [
             {
                 name: "Id",
-                column: "TEAM_ID",
+                column: "TEAMLEAGUE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "Name",
-                column: "TEAM_NAME",
-                type: "VARCHAR",
+                name: "Team",
+                column: "TEAMLEAGUE_TEAM",
+                type: "INTEGER",
             },
             {
-                name: "SumPoints",
-                column: "TEAM_SUMPOINTS",
+                name: "League",
+                column: "TEAMLEAGUE_LEAGUE",
                 type: "INTEGER",
-                required: true
+            },
+            {
+                name: "Points",
+                column: "TEAMLEAGUE_POINTS",
+                type: "INTEGER",
             }
         ]
     };
@@ -106,62 +120,58 @@ export class TeamRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(TeamRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(TeamLeagueRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: TeamEntityOptions): TeamEntity[] {
+    public findAll(options?: TeamLeagueEntityOptions): TeamLeagueEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): TeamEntity | undefined {
+    public findById(id: number): TeamLeagueEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: TeamCreateEntity): number {
-        // @ts-ignore
-        (entity as TeamEntity).SumPoints = entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints'];
+    public create(entity: TeamLeagueCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "VOLLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAMLEAGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "TEAM_ID",
+                column: "TEAMLEAGUE_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: TeamUpdateEntity): void {
-        // @ts-ignore
-        (entity as TeamEntity).SumPoints = entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints'];
+    public update(entity: TeamLeagueUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "VOLLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAMLEAGUE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "TEAM_ID",
+                column: "TEAMLEAGUE_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: TeamCreateEntity | TeamUpdateEntity): number {
-        const id = (entity as TeamUpdateEntity).Id;
+    public upsert(entity: TeamLeagueCreateEntity | TeamLeagueUpdateEntity): number {
+        const id = (entity as TeamLeagueUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as TeamUpdateEntity);
+            this.update(entity as TeamLeagueUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -173,22 +183,22 @@ export class TeamRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "VOLLEYBALL_MATCHES_TEAM",
+            table: "VOLLEYBALL_MATCHES_TEAMLEAGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "TEAM_ID",
+                column: "TEAMLEAGUE_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: TeamEntityOptions): number {
+    public count(options?: TeamLeagueEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLLEYBALL_MATCHES_TEAM"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "VOLLEYBALL_MATCHES_TEAMLEAGUE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -199,8 +209,8 @@ export class TeamRepository {
         return 0;
     }
 
-    private async triggerEvent(data: TeamEntityEvent | TeamUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("volleyball-matches-Teams-Team", ["trigger"]);
+    private async triggerEvent(data: TeamLeagueEntityEvent | TeamLeagueUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("volleyball-matches-Teams-TeamLeague", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -208,6 +218,6 @@ export class TeamRepository {
                 console.error(error);
             }            
         });
-        producer.topic("volleyball-matches-Teams-Team").send(JSON.stringify(data));
+        producer.topic("volleyball-matches-Teams-TeamLeague").send(JSON.stringify(data));
     }
 }

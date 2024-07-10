@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'volleyball-matches.Teams.Team';
+		messageHubProvider.eventIdPrefix = 'volleyball-matches.Teams.TeamLeague';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -39,11 +39,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
+			if (entity.Team !== undefined) {
+				filter.$filter.equals.Team = entity.Team;
 			}
-			if (entity.SumPoints !== undefined) {
-				filter.$filter.equals.SumPoints = entity.SumPoints;
+			if (entity.League !== undefined) {
+				filter.$filter.equals.League = entity.League;
+			}
+			if (entity.Points !== undefined) {
+				filter.$filter.equals.Points = entity.Points;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -58,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Team-filter");
+			messageHub.closeDialogWindow("TeamLeague-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

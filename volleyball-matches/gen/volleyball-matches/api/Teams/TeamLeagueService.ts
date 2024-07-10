@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { TeamRepository, TeamEntityOptions } from "../../dao/Teams/TeamRepository";
+import { TeamLeagueRepository, TeamLeagueEntityOptions } from "../../dao/Teams/TeamLeagueRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("volleyball-matches-Teams-Team", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("volleyball-matches-Teams-TeamLeague", ["validate"]);
 
 @Controller
-class TeamService {
+class TeamLeagueService {
 
-    private readonly repository = new TeamRepository();
+    private readonly repository = new TeamLeagueRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: TeamEntityOptions = {
+            const options: TeamLeagueEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class TeamService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class TeamService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Team not found");
+                HttpUtils.sendResponseNotFound("TeamLeague not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class TeamService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Team not found");
+                HttpUtils.sendResponseNotFound("TeamLeague not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,12 +119,6 @@ class TeamService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 50) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [50] characters`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }

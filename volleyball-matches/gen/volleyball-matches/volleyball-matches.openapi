@@ -15,6 +15,7 @@ tags:
   - name: Matches
   - name: Coaches
   - name: Season
+  - name: Teams
 paths:
   /volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts:
     get:
@@ -2416,6 +2417,390 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts:
+    get:
+      summary: List TeamLeague
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Teams
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/TeamLeague'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create TeamLeague
+      tags:
+        - Teams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamLeague'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamLeague'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts/{id}:
+    get:
+      summary: Get TeamLeague by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Teams
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/TeamLeague'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update TeamLeague by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Teams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamLeague'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamLeague'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete TeamLeague by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Teams
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts/count:
+    get:
+      summary: Count the number of TeamLeague
+      tags:
+        - Teams
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of TeamLeague by TeamLeagueFilterOptions
+      tags:
+        - Teams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamLeagueFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /volleyball-matches/gen/volleyball-matches/api/Teams/TeamLeagueService.ts/search:
+    post:
+      summary: Search TeamLeague by TeamLeagueFilterOptions
+      tags:
+        - Teams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamLeagueFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/TeamLeague'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     League:
@@ -2582,7 +2967,6 @@ components:
       type: object
       required:
         - Name
-        - League
       properties:
         Id:
           type: integer
@@ -2591,21 +2975,6 @@ components:
           type: string
           minLength: 0
           maxLength: 50
-        League:
-          type: integer
-          format: int32
-        VNLpoints:
-          type: integer
-          format: int32
-        EuropeanChampPoints:
-          type: integer
-          format: int32
-        OlympicGamesPoints:
-          type: integer
-          format: int32
-        WorldChampPoints:
-          type: integer
-          format: int32
         SumPoints:
           type: integer
           format: int32
@@ -2638,46 +3007,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
-                League:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VNLpoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                EuropeanChampPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                OlympicGamesPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                WorldChampPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 SumPoints:
                   oneOf:
                     - type: integer
@@ -2708,46 +3037,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
-                League:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VNLpoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                EuropeanChampPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                OlympicGamesPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                WorldChampPoints:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 SumPoints:
                   oneOf:
                     - type: integer
@@ -2764,11 +3053,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                League:
-                VNLpoints:
-                EuropeanChampPoints:
-                OlympicGamesPoints:
-                WorldChampPoints:
                 SumPoints:
             greaterThan:
               type: object
@@ -2780,21 +3064,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                League:
-                  type: integer
-                  format: int32
-                VNLpoints:
-                  type: integer
-                  format: int32
-                EuropeanChampPoints:
-                  type: integer
-                  format: int32
-                OlympicGamesPoints:
-                  type: integer
-                  format: int32
-                WorldChampPoints:
-                  type: integer
-                  format: int32
                 SumPoints:
                   type: integer
                   format: int32
@@ -2808,21 +3077,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                League:
-                  type: integer
-                  format: int32
-                VNLpoints:
-                  type: integer
-                  format: int32
-                EuropeanChampPoints:
-                  type: integer
-                  format: int32
-                OlympicGamesPoints:
-                  type: integer
-                  format: int32
-                WorldChampPoints:
-                  type: integer
-                  format: int32
                 SumPoints:
                   type: integer
                   format: int32
@@ -2836,21 +3090,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                League:
-                  type: integer
-                  format: int32
-                VNLpoints:
-                  type: integer
-                  format: int32
-                EuropeanChampPoints:
-                  type: integer
-                  format: int32
-                OlympicGamesPoints:
-                  type: integer
-                  format: int32
-                WorldChampPoints:
-                  type: integer
-                  format: int32
                 SumPoints:
                   type: integer
                   format: int32
@@ -2864,32 +3103,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                League:
-                  type: integer
-                  format: int32
-                VNLpoints:
-                  type: integer
-                  format: int32
-                EuropeanChampPoints:
-                  type: integer
-                  format: int32
-                OlympicGamesPoints:
-                  type: integer
-                  format: int32
-                WorldChampPoints:
-                  type: integer
-                  format: int32
                 SumPoints:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "League", "VNLpoints", "EuropeanChampPoints", "OlympicGamesPoints", "WorldChampPoints", "SumPoints"]
+          example: ["Id", "Name", "SumPoints"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,League,VNLpoints,EuropeanChampPoints,OlympicGamesPoints,WorldChampPoints,SumPoints"
+            example: "Id,Name,SumPoints"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3666,6 +3890,183 @@ components:
         $sort:
           - type: string
             example: "Id,Year"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    TeamLeague:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Team:
+          type: integer
+          format: int32
+        League:
+          type: integer
+          format: int32
+        Points:
+          type: integer
+          format: int32
+    TeamLeagueFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Team:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Points:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Team:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                League:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Points:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Team:
+                League:
+                Points:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Team:
+                  type: integer
+                  format: int32
+                League:
+                  type: integer
+                  format: int32
+                Points:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Team:
+                  type: integer
+                  format: int32
+                League:
+                  type: integer
+                  format: int32
+                Points:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Team:
+                  type: integer
+                  format: int32
+                League:
+                  type: integer
+                  format: int32
+                Points:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Team:
+                  type: integer
+                  format: int32
+                League:
+                  type: integer
+                  format: int32
+                Points:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Team", "League", "Points"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Team,League,Points"
         $order:
           type: string
           enum: ["asc", "desc"]
