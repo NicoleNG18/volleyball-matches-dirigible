@@ -60,7 +60,7 @@
 	                                state="{{ forms.details['SumPoints'].$valid ? '' : 'error' }}"
 									ng-required="false"
 	                                ng-model="entity.SumPoints"
-	                                ng-readonly="true"
+	                                ng-readonly="action === 'select'"
 	                                ng-minlength="${property.minLength} || 0"
 	                                ng-maxlength="${property.maxLength} || -1"
 	                                dg-input-rules="{ patterns: [''] }"

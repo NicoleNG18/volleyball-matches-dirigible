@@ -2978,7 +2978,6 @@ components:
         SumPoints:
           type: integer
           format: int32
-          readOnly: true
     TeamFilterOptions:
       type: object
       properties:

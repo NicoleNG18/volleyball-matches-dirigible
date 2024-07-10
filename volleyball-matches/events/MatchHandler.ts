@@ -1,13 +1,11 @@
 import { MatchRepository } from "volleyball-matches/gen/volleyball-matches/dao/Matches/MatchRepository";
 import { TeamRepository } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamRepository";
-import { LeagueRepository } from "volleyball-matches/gen/volleyball-matches/dao/League/LeagueRepository";
 import { TeamLeagueRepository } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamLeagueRepository";
 
 export const trigger = (event) => {
 
     const MatchDao = new MatchRepository();
     const TeamDao = new TeamRepository();
-    const LeagueDao = new LeagueRepository();
     const TeamLeagueDao = new TeamLeagueRepository();
 
     const matchId = event.key.value;

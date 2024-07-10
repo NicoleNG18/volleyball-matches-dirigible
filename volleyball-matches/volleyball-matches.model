@@ -94,13 +94,12 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
+                        "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "entity['VNLpoints']+entity['OlympicGamesPoints']+entity['EuropeanChampPoints']+entity['WorldChampPoints']",
                         "dataDefaultValue": "0",
                         "dataName": "TEAM_SUMPOINTS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
-                        "isCalculatedProperty": "true",
                         "name": "SumPoints",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
