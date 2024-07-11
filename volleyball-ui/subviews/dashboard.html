@@ -44,15 +44,12 @@
                                         <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
                                             scope="col">Team</th>
                                         <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
-                                            scope="col">League</th>
-                                        <th class="fd-table__cell fd-table__cell--activable fd-table__cell--hoverable"
                                             scope="col">Points</th>
                                     </tr>
                                 </thead>
                                 <tbody class="fd-table__body">
                                     <tr class="fd-table__row fd-table__row--hoverable" ng-repeat="next in topFiveTeams">
                                         <td class="fd-table__cell">{{next.Name}}</td>
-                                        <td class="fd-table__cell">{{optionsLeagueValue(next.League)}}</td>
                                         <td class="fd-table__cell">{{next.Points}}</td>
                                     </tr>
                                 </tbody>
