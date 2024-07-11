@@ -119,6 +119,15 @@ class TeamLeagueService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Team === null || entity.Team === undefined) {
+            throw new ValidationError(`The 'Team' property is required, provide a valid value`);
+        }
+        if (entity.League === null || entity.League === undefined) {
+            throw new ValidationError(`The 'League' property is required, provide a valid value`);
+        }
+        if (entity.Points === null || entity.Points === undefined) {
+            throw new ValidationError(`The 'Points' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

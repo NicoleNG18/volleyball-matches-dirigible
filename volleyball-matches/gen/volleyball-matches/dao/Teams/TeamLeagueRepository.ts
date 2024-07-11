@@ -133,9 +133,6 @@ export class TeamLeagueRepository {
     }
 
     public create(entity: TeamLeagueCreateEntity): number {
-        if (entity.Points === undefined || entity.Points === null) {
-            (entity as TeamLeagueEntity).Points = 0;
-        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

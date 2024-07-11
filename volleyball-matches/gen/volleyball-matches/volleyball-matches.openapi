@@ -2807,6 +2807,7 @@ components:
       type: object
       required:
         - Name
+        - Season
       properties:
         Id:
           type: integer
@@ -2967,6 +2968,7 @@ components:
       type: object
       required:
         - Name
+        - SumPoints
       properties:
         Id:
           type: integer
@@ -3902,6 +3904,9 @@ components:
     TeamLeague:
       type: object
       required:
+        - Team
+        - League
+        - Points
       properties:
         Id:
           type: integer

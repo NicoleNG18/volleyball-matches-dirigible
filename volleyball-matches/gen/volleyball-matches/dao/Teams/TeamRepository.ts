@@ -120,9 +120,6 @@ export class TeamRepository {
     }
 
     public create(entity: TeamCreateEntity): number {
-        if (entity.SumPoints === undefined || entity.SumPoints === null) {
-            (entity as TeamEntity).SumPoints = 0;
-        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

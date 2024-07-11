@@ -51,14 +51,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSumPoints" dg-required="false" dg-colon="true">SumPoints</fd-form-label>
+                        	<fd-form-label for="idSumPoints" dg-required="true" dg-colon="true">SumPoints</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SumPoints'].$valid }}">
 	                            <fd-input id="idSumPoints"
 	                                name="SumPoints"
 	                                state="{{ forms.details['SumPoints'].$valid ? '' : 'error' }}"
-									ng-required="false"
+									ng-required="true"
 	                                ng-model="entity.SumPoints"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="${property.minLength} || 0"
