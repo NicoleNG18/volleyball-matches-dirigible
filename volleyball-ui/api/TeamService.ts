@@ -1,6 +1,4 @@
-import { TeamRepository as TeamDao } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamRepository";
 import { TeamLeagueRepository as TeamLeagueDao } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamLeagueRepository";
-
 
 import { Controller, Get } from "sdk/http";
 import { query } from "sdk/db";
@@ -8,11 +6,9 @@ import { query } from "sdk/db";
 @Controller
 class TeamService {
 
-    private readonly teamDao;
     private readonly teamLeagueDao;
 
     constructor() {
-        this.teamDao = new TeamDao();
         this.teamLeagueDao = new TeamLeagueDao();
     }
 

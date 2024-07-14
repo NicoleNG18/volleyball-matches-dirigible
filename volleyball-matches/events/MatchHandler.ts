@@ -52,9 +52,7 @@ export const trigger = (event) => {
         TeamDao.update(hostTeam);
 
     }
-    else if (event.operation === "update") {
-    } else if (event.operation === "delete") {
-    } else {
+    else {
         throw new Error("Unknown operation: " + event.operation);
     }
 }
