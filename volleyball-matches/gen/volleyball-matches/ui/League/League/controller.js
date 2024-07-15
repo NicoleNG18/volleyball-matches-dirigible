@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/volleyball-matches/gen/volleyball-matches/api/League/LeagueService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -107,14 +107,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("League-details", {
 				action: "select",
 				entity: entity,
-				optionsSeason: $scope.optionsSeason,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("League-filter", {
 				entity: $scope.filterEntity,
-				optionsSeason: $scope.optionsSeason,
 			});
 		};
 
@@ -123,7 +121,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("League-details", {
 				action: "create",
 				entity: {},
-				optionsSeason: $scope.optionsSeason,
 			}, null, false);
 		};
 
@@ -131,7 +128,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("League-details", {
 				action: "update",
 				entity: entity,
-				optionsSeason: $scope.optionsSeason,
 			}, null, false);
 		};
 
@@ -163,28 +159,5 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsSeason = [];
-
-
-		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts").then(function (response) {
-			$scope.optionsSeason = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Year
-				}
-			});
-		});
-
-		$scope.optionsSeasonValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsSeason.length; i++) {
-				if ($scope.optionsSeason[i].value === optionKey) {
-					return $scope.optionsSeason[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

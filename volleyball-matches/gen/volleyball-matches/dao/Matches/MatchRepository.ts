@@ -11,6 +11,7 @@ export interface MatchEntity {
     Result?: string;
     PointsGuest?: number;
     PointsHost?: number;
+    Season?: number;
 }
 
 export interface MatchCreateEntity {
@@ -20,6 +21,7 @@ export interface MatchCreateEntity {
     readonly Result?: string;
     readonly PointsGuest?: number;
     readonly PointsHost?: number;
+    readonly Season?: number;
 }
 
 export interface MatchUpdateEntity extends MatchCreateEntity {
@@ -36,6 +38,7 @@ export interface MatchEntityOptions {
             Result?: string | string[];
             PointsGuest?: number | number[];
             PointsHost?: number | number[];
+            Season?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -45,6 +48,7 @@ export interface MatchEntityOptions {
             Result?: string | string[];
             PointsGuest?: number | number[];
             PointsHost?: number | number[];
+            Season?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -54,6 +58,7 @@ export interface MatchEntityOptions {
             Result?: string;
             PointsGuest?: number;
             PointsHost?: number;
+            Season?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -63,6 +68,7 @@ export interface MatchEntityOptions {
             Result?: string;
             PointsGuest?: number;
             PointsHost?: number;
+            Season?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -72,6 +78,7 @@ export interface MatchEntityOptions {
             Result?: string;
             PointsGuest?: number;
             PointsHost?: number;
+            Season?: number;
         };
         lessThan?: {
             Id?: number;
@@ -81,6 +88,7 @@ export interface MatchEntityOptions {
             Result?: string;
             PointsGuest?: number;
             PointsHost?: number;
+            Season?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -90,6 +98,7 @@ export interface MatchEntityOptions {
             Result?: string;
             PointsGuest?: number;
             PointsHost?: number;
+            Season?: number;
         };
     },
     $select?: (keyof MatchEntity)[],
@@ -154,6 +163,11 @@ export class MatchRepository {
             {
                 name: "PointsHost",
                 column: "MATCH_POINTSHOST",
+                type: "INTEGER",
+            },
+            {
+                name: "Season",
+                column: "MATCH_SEASON",
                 type: "INTEGER",
             }
         ]

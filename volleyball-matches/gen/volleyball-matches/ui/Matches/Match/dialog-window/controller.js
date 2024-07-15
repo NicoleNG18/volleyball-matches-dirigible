@@ -27,6 +27,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsLeague = params.optionsLeague;
 			$scope.optionsGuest = params.optionsGuest;
 			$scope.optionsHost = params.optionsHost;
+			$scope.optionsSeason = params.optionsSeason;
 		}
 
 		$scope.create = function () {

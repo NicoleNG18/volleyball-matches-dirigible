@@ -16,11 +16,6 @@
                         "type": "VARCHAR",
                         "length": 50,
                         "name": "LEAGUE_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEAGUE_SEASON"
                     }
                 ]
             },
@@ -73,6 +68,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "PLAYER_TEAM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PLAYER_SEASON"
                     }
                 ]
             },
@@ -117,6 +117,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "MATCH_POINTSHOST"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MATCH_SEASON"
                     }
                 ]
             },
@@ -187,17 +192,14 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "TEAMLEAGUE_POINTS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "defaultValue": "2024",
+                        "nullable": true,
+                        "name": "TEAMLEAGUE_SEASON"
                     }
                 ]
-            },
-            {
-                "name": "League_Season",
-                "type": "foreignKey",
-                "table": "VOLLEYBALL_MATCHES_LEAGUE",
-                "constraintName": "League_Season",
-                "columns": "LEAGUE_SEASON",
-                "referencedTable": "VOLLEYBALL_MATCHES_SEASON",
-                "referencedColumns": "SEASON_ID"
             },
             {
                 "name": "Player_Team",
@@ -207,6 +209,15 @@
                 "columns": "PLAYER_TEAM",
                 "referencedTable": "VOLLEYBALL_MATCHES_TEAM",
                 "referencedColumns": "TEAM_ID"
+            },
+            {
+                "name": "Player_Season",
+                "type": "foreignKey",
+                "table": "VOLLEYBALL_MATCHES_PLAYER",
+                "constraintName": "Player_Season",
+                "columns": "PLAYER_SEASON",
+                "referencedTable": "VOLLEYBALL_MATCHES_SEASON",
+                "referencedColumns": "SEASON_ID"
             },
             {
                 "name": "Match_League",
@@ -236,6 +247,15 @@
                 "referencedColumns": "TEAM_ID"
             },
             {
+                "name": "Match_Season",
+                "type": "foreignKey",
+                "table": "VOLLEYBALL_MATCHES_MATCH",
+                "constraintName": "Match_Season",
+                "columns": "MATCH_SEASON",
+                "referencedTable": "VOLLEYBALL_MATCHES_SEASON",
+                "referencedColumns": "SEASON_ID"
+            },
+            {
                 "name": "Coach_Team",
                 "type": "foreignKey",
                 "table": "VOLLEYBALL_MATCHES_COACH",
@@ -261,6 +281,15 @@
                 "columns": "TEAMLEAGUE_LEAGUE",
                 "referencedTable": "VOLLEYBALL_MATCHES_LEAGUE",
                 "referencedColumns": "LEAGUE_ID"
+            },
+            {
+                "name": "TeamLeague_Season",
+                "type": "foreignKey",
+                "table": "VOLLEYBALL_MATCHES_TEAMLEAGUE",
+                "constraintName": "TeamLeague_Season",
+                "columns": "TEAMLEAGUE_SEASON",
+                "referencedTable": "VOLLEYBALL_MATCHES_SEASON",
+                "referencedColumns": "SEASON_ID"
             }
         ]
     },

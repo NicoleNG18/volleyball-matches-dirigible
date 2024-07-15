@@ -8,12 +8,14 @@ export interface TeamLeagueEntity {
     Team?: number;
     League?: number;
     Points?: number;
+    Season?: number;
 }
 
 export interface TeamLeagueCreateEntity {
     readonly Team?: number;
     readonly League?: number;
     readonly Points?: number;
+    readonly Season?: number;
 }
 
 export interface TeamLeagueUpdateEntity extends TeamLeagueCreateEntity {
@@ -27,42 +29,49 @@ export interface TeamLeagueEntityOptions {
             Team?: number | number[];
             League?: number | number[];
             Points?: number | number[];
+            Season?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Team?: number | number[];
             League?: number | number[];
             Points?: number | number[];
+            Season?: number | number[];
         };
         contains?: {
             Id?: number;
             Team?: number;
             League?: number;
             Points?: number;
+            Season?: number;
         };
         greaterThan?: {
             Id?: number;
             Team?: number;
             League?: number;
             Points?: number;
+            Season?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Team?: number;
             League?: number;
             Points?: number;
+            Season?: number;
         };
         lessThan?: {
             Id?: number;
             Team?: number;
             League?: number;
             Points?: number;
+            Season?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Team?: number;
             League?: number;
             Points?: number;
+            Season?: number;
         };
     },
     $select?: (keyof TeamLeagueEntity)[],
@@ -113,6 +122,11 @@ export class TeamLeagueRepository {
                 name: "Points",
                 column: "TEAMLEAGUE_POINTS",
                 type: "INTEGER",
+            },
+            {
+                name: "Season",
+                column: "TEAMLEAGUE_SEASON",
+                type: "INTEGER",
             }
         ]
     };
@@ -124,6 +138,15 @@ export class TeamLeagueRepository {
     }
 
     public findAll(options?: TeamLeagueEntityOptions): TeamLeagueEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Season,";
+        // @ts-ignore
+        options.$order = "ASC";
         return this.dao.list(options);
     }
 
@@ -133,6 +156,9 @@ export class TeamLeagueRepository {
     }
 
     public create(entity: TeamLeagueCreateEntity): number {
+        if (entity.Season === undefined || entity.Season === null) {
+            (entity as TeamLeagueEntity).Season = 2024;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

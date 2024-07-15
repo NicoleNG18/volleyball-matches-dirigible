@@ -108,6 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsTeam: $scope.optionsTeam,
+				optionsSeason: $scope.optionsSeason,
 			});
 		};
 
@@ -115,6 +116,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Player-filter", {
 				entity: $scope.filterEntity,
 				optionsTeam: $scope.optionsTeam,
+				optionsSeason: $scope.optionsSeason,
 			});
 		};
 
@@ -124,6 +126,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "create",
 				entity: {},
 				optionsTeam: $scope.optionsTeam,
+				optionsSeason: $scope.optionsSeason,
 			}, null, false);
 		};
 
@@ -132,6 +135,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "update",
 				entity: entity,
 				optionsTeam: $scope.optionsTeam,
+				optionsSeason: $scope.optionsSeason,
 			}, null, false);
 		};
 
@@ -166,6 +170,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsTeam = [];
+		$scope.optionsSeason = [];
 
 
 		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Teams/TeamService.ts").then(function (response) {
@@ -177,10 +182,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/volleyball-matches/gen/volleyball-matches/api/Season/SeasonService.ts").then(function (response) {
+			$scope.optionsSeason = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Year
+				}
+			});
+		});
+
 		$scope.optionsTeamValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsTeam.length; i++) {
 				if ($scope.optionsTeam[i].value === optionKey) {
 					return $scope.optionsTeam[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsSeasonValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSeason.length; i++) {
+				if ($scope.optionsSeason[i].value === optionKey) {
+					return $scope.optionsSeason[i].text;
 				}
 			}
 			return null;

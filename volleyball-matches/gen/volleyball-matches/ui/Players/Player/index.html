@@ -31,6 +31,7 @@
 						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>Age</th>
 						<th fd-table-header-cell>Team</th>
+						<th fd-table-header-cell>Season</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -44,6 +45,9 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Age}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsTeamValue(next.Team)}}
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsSeasonValue(next.Season)}}
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>

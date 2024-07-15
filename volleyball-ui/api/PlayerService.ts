@@ -1,23 +1,38 @@
 import { PlayerRepository as PlayerDao } from "volleyball-matches/gen/volleyball-matches/dao/Players/PlayerRepository";
+import { SeasonRepository as SeasonDao } from "volleyball-matches/gen/volleyball-matches/dao/Season/SeasonRepository";
 
 import { Controller, Get } from "sdk/http";
 
-@Controller
+
+@Controller()
 class PlayerService {
 
     private readonly playerDao;
+    private readonly seasonDao;
 
     constructor() {
         this.playerDao = new PlayerDao();
+        this.seasonDao = new SeasonDao();
     }
 
-    @Get("/playerData")
-    public playerData() {
+    @Get("/:season")
+    public playerData24(_: any, ctx: any) {
+
+        const seasonParam = ctx.pathParameters.season;
+
+        let season = this.seasonDao.findAll({
+            $filter: {
+                equals: {
+                    Year: seasonParam
+                }
+            }
+        });
 
         let bulgarian = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 1
+                    Team: 1,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -26,7 +41,8 @@ class PlayerService {
         let polish = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 2
+                    Team: 2,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -34,7 +50,8 @@ class PlayerService {
         let slovenian = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 3
+                    Team: 3,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -42,7 +59,8 @@ class PlayerService {
         let french = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 4
+                    Team: 4,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -50,7 +68,8 @@ class PlayerService {
         let brazilian = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 5
+                    Team: 5,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -58,7 +77,8 @@ class PlayerService {
         let dutch = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 6
+                    Team: 6,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -66,7 +86,8 @@ class PlayerService {
         let canadian = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 7
+                    Team: 7,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -74,7 +95,8 @@ class PlayerService {
         let cuban = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 8
+                    Team: 8,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -82,7 +104,8 @@ class PlayerService {
         let american = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 9
+                    Team: 9,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -90,7 +113,8 @@ class PlayerService {
         let chineese = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 10
+                    Team: 10,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -98,7 +122,8 @@ class PlayerService {
         let turkish = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 11
+                    Team: 11,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -106,7 +131,8 @@ class PlayerService {
         let serbian = this.playerDao.findAll({
             $filter: {
                 equals: {
-                    Team: 12
+                    Team: 12,
+                    Season: season[0].Id
                 }
             }
         }).sort((a, b) => a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0);
@@ -127,5 +153,8 @@ class PlayerService {
         };
 
     }
+
+
+
 
 }

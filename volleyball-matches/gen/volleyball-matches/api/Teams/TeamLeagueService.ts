@@ -128,6 +128,9 @@ class TeamLeagueService {
         if (entity.Points === null || entity.Points === undefined) {
             throw new ValidationError(`The 'Points' property is required, provide a valid value`);
         }
+        if (entity.Season === null || entity.Season === undefined) {
+            throw new ValidationError(`The 'Season' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

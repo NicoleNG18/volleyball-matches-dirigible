@@ -125,9 +125,6 @@ class LeagueService {
         if (entity.Name?.length > 50) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [50] characters`);
         }
-        if (entity.Season === null || entity.Season === undefined) {
-            throw new ValidationError(`The 'Season' property is required, provide a valid value`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }

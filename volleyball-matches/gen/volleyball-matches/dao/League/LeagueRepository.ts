@@ -6,12 +6,10 @@ import { dao as daoApi } from "sdk/db";
 export interface LeagueEntity {
     readonly Id: number;
     Name: string;
-    Season?: number;
 }
 
 export interface LeagueCreateEntity {
     readonly Name: string;
-    readonly Season?: number;
 }
 
 export interface LeagueUpdateEntity extends LeagueCreateEntity {
@@ -23,37 +21,30 @@ export interface LeagueEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Season?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Season?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
-            Season?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
-            Season?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Season?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
-            Season?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Season?: number;
         };
     },
     $select?: (keyof LeagueEntity)[],
@@ -95,11 +86,6 @@ export class LeagueRepository {
                 column: "LEAGUE_NAME",
                 type: "VARCHAR",
                 required: true
-            },
-            {
-                name: "Season",
-                column: "LEAGUE_SEASON",
-                type: "INTEGER",
             }
         ]
     };

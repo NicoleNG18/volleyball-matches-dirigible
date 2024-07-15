@@ -7,21 +7,23 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         busyText: "Loading...",
     };
 
+    let season = "2024";
+
     $scope.openPerspective = function (perspective) {
         if (perspective === 'Teams') {
             messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'Teams' }, true);
         };
     }
-    async function getPlayerData() {
+
+    async function getPlayerData(season) {
         try {
-            const response = await $http.get("/services/ts/volleyball-ui/api/PlayerService.ts/playerData");
+            const response = await $http.get("/services/ts/volleyball-ui/api/PlayerService.ts/" + season);
             console.log(response.data);
             return response.data;
         } catch (error) {
             console.error('Error fetching product data:', error);
         }
     }
-
 
     async function getTeamData() {
         try {
@@ -51,41 +53,103 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         });
     });
 
-    $scope.optionsLeagueValue = function (optionKey) {
-        for (let i = 0; i < $scope.optionsLeague.length; i++) {
-            if ($scope.optionsLeague[i].value === optionKey) {
-                return $scope.optionsLeague[i].text;
-            }
-        }
-        return null;
-    };
-
-    $scope.optionsTeamValue = function (optionKey) {
-        for (let i = 0; i < $scope.optionsTeam.length; i++) {
-            if ($scope.optionsTeam[i].value === optionKey) {
-                return $scope.optionsTeam[i].text;
-            }
-        }
-        return null;
-    };
-
     angular.element($document[0]).ready(async function () {
         const teamData = await getTeamData();
+        const playerData = await getPlayerData(season);
         $scope.$apply(function () {
+            $scope.season = season;
             $scope.vnlTeams = teamData.VnlTeams;
             $scope.olympicTeams = teamData.OlympicTeams;
             $scope.europeanChampTeams = teamData.EuropeanChampTeams;
             $scope.worldChampTeams = teamData.WorldChampTeams;
             $scope.topFiveTeams = teamData.TopFiveTeams;
+            $scope.serbian = playerData.Serbian;
+            $scope.french = playerData.French;
+            $scope.brazilian = playerData.Brazilian;
+            $scope.bulgarian = playerData.Bulgarian;
+            $scope.slovenian = playerData.Slovenian;
+            $scope.cuban = playerData.Cuban;
+            $scope.canadian = playerData.Canadian;
+            $scope.turkish = playerData.Turkish;
+            $scope.american = playerData.American;
+            $scope.polish = playerData.Polish;
+            $scope.chineese = playerData.Chineese;
+            $scope.dutch = playerData.Dutch;
         })
     });
 
 
+    $scope.displayS24 = function () {
+        angular.element($document[0]).ready(async function () {
+            season = "2024";
+            const playerData = await getPlayerData(season);
+            $scope.$apply(function () {
+                $scope.season = + season;
+                $scope.serbian = playerData.Serbian;
+                $scope.french = playerData.French;
+                $scope.brazilian = playerData.Brazilian;
+                $scope.bulgarian = playerData.Bulgarian;
+                $scope.slovenian = playerData.Slovenian;
+                $scope.cuban = playerData.Cuban;
+                $scope.canadian = playerData.Canadian;
+                $scope.turkish = playerData.Turkish;
+                $scope.american = playerData.American;
+                $scope.polish = playerData.Polish;
+                $scope.chineese = playerData.Chineese;
+                $scope.dutch = playerData.Dutch;
+            });
+        });
+    };
+
+    $scope.displayS22 = function () {
+        angular.element($document[0]).ready(async function () {
+            season = "2022";
+            const playerData = await getPlayerData(season);
+            $scope.$apply(function () {
+                $scope.season = + season;
+                $scope.serbian = playerData.Serbian;
+                $scope.french = playerData.French;
+                $scope.brazilian = playerData.Brazilian;
+                $scope.bulgarian = playerData.Bulgarian;
+                $scope.slovenian = playerData.Slovenian;
+                $scope.cuban = playerData.Cuban;
+                $scope.canadian = playerData.Canadian;
+                $scope.turkish = playerData.Turkish;
+                $scope.american = playerData.American;
+                $scope.polish = playerData.Polish;
+                $scope.chineese = playerData.Chineese;
+                $scope.dutch = playerData.Dutch;
+            });
+        });
+    };
+
+    $scope.displayS23 = function () {
+        angular.element($document[0]).ready(async function () {
+            season = "2023";
+            const playerData = await getPlayerData(season);
+            $scope.$apply(function () {
+                $scope.season = + season;
+                $scope.serbian = playerData.Serbian;
+                $scope.french = playerData.French;
+                $scope.brazilian = playerData.Brazilian;
+                $scope.bulgarian = playerData.Bulgarian;
+                $scope.slovenian = playerData.Slovenian;
+                $scope.cuban = playerData.Cuban;
+                $scope.canadian = playerData.Canadian;
+                $scope.turkish = playerData.Turkish;
+                $scope.american = playerData.American;
+                $scope.polish = playerData.Polish;
+                $scope.chineese = playerData.Chineese;
+                $scope.dutch = playerData.Dutch;
+            });
+        });
+    };
 
     $scope.displayByName = function () {
         angular.element($document[0]).ready(async function () {
-            const playerData = await getPlayerData();
+            const playerData = await getPlayerData(season);
             $scope.$apply(function () {
+                $scope.season = + season;
                 $scope.serbian = playerData.Serbian;
                 $scope.french = playerData.French;
                 $scope.brazilian = playerData.Brazilian;
@@ -104,8 +168,9 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
 
     $scope.displayByAge = function () {
         angular.element($document[0]).ready(async function () {
-            const playerData = await getPlayerData();
+            const playerData = await getPlayerData(season);
             $scope.$apply(function () {
+                $scope.season = + season;
                 $scope.serbian = playerData.Serbian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
                 $scope.french = playerData.French.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
                 $scope.brazilian = playerData.Brazilian.sort((a, b) => a.Age < b.Age ? -1 : a.Age > b.Age ? 1 : 0);
@@ -121,4 +186,23 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
             });
         });
     };
+
+    $scope.optionsLeagueValue = function (optionKey) {
+        for (let i = 0; i < $scope.optionsLeague.length; i++) {
+            if ($scope.optionsLeague[i].value === optionKey) {
+                return $scope.optionsLeague[i].text;
+            }
+        }
+        return null;
+    };
+
+    $scope.optionsTeamValue = function (optionKey) {
+        for (let i = 0; i < $scope.optionsTeam.length; i++) {
+            if ($scope.optionsTeam[i].value === optionKey) {
+                return $scope.optionsTeam[i].text;
+            }
+        }
+        return null;
+    };
+
 }]);

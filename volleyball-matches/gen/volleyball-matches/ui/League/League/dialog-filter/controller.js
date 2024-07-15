@@ -14,7 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsSeason = params.optionsSeason;
 		}
 
 		$scope.filter = function () {
@@ -42,9 +41,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
-			}
-			if (entity.Season !== undefined) {
-				filter.$filter.equals.Season = entity.Season;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

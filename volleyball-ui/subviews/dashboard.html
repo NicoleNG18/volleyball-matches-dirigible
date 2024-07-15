@@ -25,6 +25,18 @@
             <h1> Welcome to Volleyball matches Dashboard </h1>
         </div>
 
+        <div dir="ltr" class="season-buttons">
+            <h2>Season</h2>
+            <div class="fddocs-button-container">
+                <div class="fd-segmented-button" role="group" aria-label="Group label">
+                    <button aria-label="Survey" class="fd-button button-season" ng-click="displayS24()">2024</button>
+                    <button aria-label="Chart" class="fd-button button-season" ng-click="displayS23()">2023</button>
+                    <button aria-label="Pool" class="fd-button button-season" ng-click="displayS22()">2022</button>
+                </div>
+            </div>
+
+        </div>
+
         <section>
             <fd-panel expanded="true" class="fd-col fd-col--12">
                 <fd-panel-header>
@@ -147,6 +159,7 @@
                     <button class="fd-button fd-button--compact" ng-click="displayByAge()">By Age</button>
                 </fd-panel-header>
                 <fd-panel-content aria-label="Players-contents">
+                    <p style="margin: 1em auto; font-size: 2em;">Season {{season}} players</p>
                     <div dir="ltr" class="teams-tables">
                         <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
                             <thead class="fd-table__header">

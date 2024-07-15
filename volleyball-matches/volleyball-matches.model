@@ -26,25 +26,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "LEAGUE_SEASON",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "Season",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "League_Season",
-                        "relationshipType": "COMPOSITION",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Year",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipEntityName": "Season",
-                        "relationshipEntityPerspectiveName": "Season",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity League",
@@ -184,6 +165,22 @@
                         "relationshipEntityName": "Team",
                         "relationshipEntityPerspectiveName": "Teams",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "PLAYER_SEASON",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Season",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Year",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Player_Season",
+                        "relationshipEntityName": "Season",
+                        "relationshipEntityPerspectiveName": "Season",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Player",
@@ -309,6 +306,22 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "MATCH_SEASON",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Season",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Year",
+                        "widgetIsMajor": "false",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Match_Season",
+                        "relationshipEntityName": "Season",
+                        "relationshipEntityPerspectiveName": "Season",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Match",
@@ -508,6 +521,26 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "",
+                        "dataDefaultValue": "2024",
+                        "dataName": "TEAMLEAGUE_SEASON",
+                        "dataNullable": "true",
+                        "dataOrderBy": "ASC",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "Season",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Year",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "TeamLeague_Season",
+                        "relationshipEntityName": "Season",
+                        "relationshipEntityPerspectiveName": "Season",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity TeamLeague",

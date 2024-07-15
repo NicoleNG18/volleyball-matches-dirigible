@@ -8,12 +8,14 @@ export interface PlayerEntity {
     Name?: string;
     Age?: number;
     Team?: number;
+    Season?: number;
 }
 
 export interface PlayerCreateEntity {
     readonly Name?: string;
     readonly Age?: number;
     readonly Team?: number;
+    readonly Season?: number;
 }
 
 export interface PlayerUpdateEntity extends PlayerCreateEntity {
@@ -27,42 +29,49 @@ export interface PlayerEntityOptions {
             Name?: string | string[];
             Age?: number | number[];
             Team?: number | number[];
+            Season?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Age?: number | number[];
             Team?: number | number[];
+            Season?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Age?: number;
             Team?: number;
+            Season?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Age?: number;
             Team?: number;
+            Season?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Age?: number;
             Team?: number;
+            Season?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Age?: number;
             Team?: number;
+            Season?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Age?: number;
             Team?: number;
+            Season?: number;
         };
     },
     $select?: (keyof PlayerEntity)[],
@@ -112,6 +121,11 @@ export class PlayerRepository {
             {
                 name: "Team",
                 column: "PLAYER_TEAM",
+                type: "INTEGER",
+            },
+            {
+                name: "Season",
+                column: "PLAYER_SEASON",
                 type: "INTEGER",
             }
         ]

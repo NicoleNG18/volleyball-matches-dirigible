@@ -16,6 +16,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsTeam = params.optionsTeam;
 			$scope.optionsLeague = params.optionsLeague;
+			$scope.optionsSeason = params.optionsSeason;
 		}
 
 		$scope.filter = function () {
@@ -49,6 +50,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Points !== undefined) {
 				filter.$filter.equals.Points = entity.Points;
+			}
+			if (entity.Season !== undefined) {
+				filter.$filter.equals.Season = entity.Season;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

@@ -4,6 +4,16 @@
     font-weight: bold;
 }
 
+.button-season:hover {
+    color: white;
+    background-color: rgb(7, 7, 129);
+}
+
+.season-buttons {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 .header-players {
     display: flex;
     flex-direction: row;
@@ -25,7 +35,8 @@ p {
     display: flex;
     flex-direction: row;
     gap: 3em;
-    padding: 5em;
+    padding: 4em;
+
 }
 
 tr .table-cell {
