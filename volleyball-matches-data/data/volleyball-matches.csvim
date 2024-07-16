@@ -65,6 +65,17 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": ""
+    },
+    {
+      "table": "VOLLEYBALL_MATCHES_MATCH",
+      "schema": "PUBLIC",
+      "file": "/volleyball-matches-data/data/csv/match.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
     }
   ]
 }
