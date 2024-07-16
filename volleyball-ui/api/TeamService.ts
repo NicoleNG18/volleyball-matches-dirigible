@@ -64,7 +64,14 @@ class TeamService {
             }
         }).sort((a, b) => a.Points > b.Points ? -1 : a.Points < b.Points ? 1 : 0);
 
-        const topFiveTeams = this.topTeams(season[0].Id);
+        const sqlUnits = "SELECT TEAM_NAME as NAME, TEAM_SUMPOINTS AS POINTS FROM VOLLEYBALL_MATCHES_TEAM ORDER BY TEAM_SUMPOINTS DESC LIMIT 5";
+        let resultset = query.execute(sqlUnits);
+
+        const topFiveTeams = resultset.map(row => ({
+            Name: row.NAME,
+            Points: row.POINTS
+        }));
+
 
         return {
             "VnlTeams": vnlTeams,
@@ -75,16 +82,4 @@ class TeamService {
         };
     }
 
-
-    private topTeams(season: number) {
-        const sqlUnits = "SELECT t.TEAM_NAME as NAME, t.TEAM_SUMPOINTS AS POINTS FROM VOLLEYBALL_MATCHES_TEAM t JOIN VOLLEYBALL_MATCHES_TEAMLEAGUE tl on t.TEAM_ID=tl.TEAMLEAGUE_TEAM WHERE tl.TEAMLEAGUE_SEASON = ? ORDER BY t.TEAM_SUMPOINTS DESC LIMIT 5";
-        let resultset = query.execute(sqlUnits, [season]);
-
-        const topFiveTeams = resultset.map(row => ({
-            Name: row.NAME,
-            Points: row.POINTS
-        }));
-
-        return topFiveTeams;
-    }
 }
