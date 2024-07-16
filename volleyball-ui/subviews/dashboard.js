@@ -25,9 +25,9 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         }
     }
 
-    async function getTeamData() {
+    async function getTeamData(season) {
         try {
-            const response = await $http.get("/services/ts/volleyball-ui/api/TeamService.ts/teamData");
+            const response = await $http.get("/services/ts/volleyball-ui/api/TeamService.ts/" + season);
             console.log(response.data);
             return response.data;
         } catch (error) {
@@ -54,7 +54,7 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
     });
 
     angular.element($document[0]).ready(async function () {
-        const teamData = await getTeamData();
+        const teamData = await getTeamData(season);
         const playerData = await getPlayerData(season);
         $scope.$apply(function () {
             $scope.season = season;
@@ -83,8 +83,14 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         angular.element($document[0]).ready(async function () {
             season = "2024";
             const playerData = await getPlayerData(season);
+            const teamData = await getTeamData(season);
             $scope.$apply(function () {
                 $scope.season = + season;
+                $scope.vnlTeams = teamData.VnlTeams;
+                $scope.olympicTeams = teamData.OlympicTeams;
+                $scope.europeanChampTeams = teamData.EuropeanChampTeams;
+                $scope.worldChampTeams = teamData.WorldChampTeams;
+                $scope.topFiveTeams = teamData.TopFiveTeams;
                 $scope.serbian = playerData.Serbian;
                 $scope.french = playerData.French;
                 $scope.brazilian = playerData.Brazilian;
@@ -105,8 +111,14 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         angular.element($document[0]).ready(async function () {
             season = "2022";
             const playerData = await getPlayerData(season);
+            const teamData = await getTeamData(season);
             $scope.$apply(function () {
                 $scope.season = + season;
+                $scope.vnlTeams = teamData.VnlTeams;
+                $scope.olympicTeams = teamData.OlympicTeams;
+                $scope.europeanChampTeams = teamData.EuropeanChampTeams;
+                $scope.worldChampTeams = teamData.WorldChampTeams;
+                $scope.topFiveTeams = teamData.TopFiveTeams;
                 $scope.serbian = playerData.Serbian;
                 $scope.french = playerData.French;
                 $scope.brazilian = playerData.Brazilian;
@@ -127,8 +139,14 @@ dashboard.controller('DashboardController', ['$scope', '$document', '$http', 'me
         angular.element($document[0]).ready(async function () {
             season = "2023";
             const playerData = await getPlayerData(season);
+            const teamData = await getTeamData(season);
             $scope.$apply(function () {
                 $scope.season = + season;
+                $scope.vnlTeams = teamData.VnlTeams;
+                $scope.olympicTeams = teamData.OlympicTeams;
+                $scope.europeanChampTeams = teamData.EuropeanChampTeams;
+                $scope.worldChampTeams = teamData.WorldChampTeams;
+                $scope.topFiveTeams = teamData.TopFiveTeams;
                 $scope.serbian = playerData.Serbian;
                 $scope.french = playerData.French;
                 $scope.brazilian = playerData.Brazilian;
