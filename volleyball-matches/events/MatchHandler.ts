@@ -2,6 +2,7 @@ import { MatchRepository } from "volleyball-matches/gen/volleyball-matches/dao/M
 import { TeamRepository } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamRepository";
 import { TeamLeagueRepository } from "volleyball-matches/gen/volleyball-matches/dao/Teams/TeamLeagueRepository";
 import { LeagueRepository } from "volleyball-matches/gen/volleyball-matches/dao/League/LeagueRepository";
+import { SeasonRepository } from "volleyball-matches/gen/volleyball-matches/dao/Season/SeasonRepository";
 
 export const trigger = (event) => {
 
@@ -9,6 +10,7 @@ export const trigger = (event) => {
     const TeamDao = new TeamRepository();
     const TeamLeagueDao = new TeamLeagueRepository();
     const LeagueDao = new LeagueRepository();
+    const SeasonDao = new SeasonRepository();
 
     const matchId = event.key.value;
     const match = MatchDao.findById(matchId);
@@ -16,6 +18,7 @@ export const trigger = (event) => {
     let hostTeam = TeamDao.findById(match.Host);
     let guestTeam = TeamDao.findById(match.Guest);
     let league = LeagueDao.findById(match.League);
+    let season = SeasonDao.findById(match.Season);
 
     const operation = event.operation;
 
@@ -25,7 +28,8 @@ export const trigger = (event) => {
             $filter: {
                 equals: {
                     Team: hostTeam.Id,
-                    League: league.Id
+                    League: league.Id,
+                    Season: season.Id
                 }
             }
         });
@@ -34,7 +38,8 @@ export const trigger = (event) => {
             $filter: {
                 equals: {
                     Team: guestTeam.Id,
-                    League: league.Id
+                    League: league.Id,
+                    Season: season.Id
                 }
             }
         });
