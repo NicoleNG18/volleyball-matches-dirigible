@@ -72,7 +72,6 @@ class TeamService {
             Points: row.POINTS
         }));
 
-
         return {
             "VnlTeams": vnlTeams,
             "OlympicTeams": olympicTeams,

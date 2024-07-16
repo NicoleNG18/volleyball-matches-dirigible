@@ -3,7 +3,6 @@ import { SeasonRepository as SeasonDao } from "volleyball-matches/gen/volleyball
 
 import { Controller, Get } from "sdk/http";
 
-
 @Controller
 class PlayerService {
 
@@ -153,8 +152,5 @@ class PlayerService {
         };
 
     }
-
-
-
 
 }
